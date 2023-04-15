@@ -1,7 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 
-from data.config import ADMINS
+from keyboards.default.start import start
 from loader import dp, db, bot
 
 
@@ -20,11 +20,9 @@ async def bot_start(message: types.Message):
             user_id=user_id
         )
 
-        # About message to ADMIN
-        msg = f"{user_mention} [<code>{user_id}</code>] bazaga qo'shildi."
-        await bot.send_message(chat_id=ADMINS, text=msg)
-
     except:
-        await bot.send_message(chat_id=ADMINS, text=f"{user_mention} [<code>{user_id}</code>] bazaga oldin qo'shilgan")
+        pass
 
-    await message.answer(f"Xush kelibsiz! {full_name}")
+    start_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga investitsiya " \
+                 "kiritib olishingiz mumkin</b>"
+    await message.answer(text=start_text, reply_markup=start)
