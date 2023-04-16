@@ -47,7 +47,11 @@ class Database:
         id SERIAL PRIMARY KEY,
         full_name VARCHAR(255) NOT NULL,
         username varchar(255) NULL,
-        user_id BIGINT NOT NULL UNIQUE
+        user_id BIGINT NOT NULL UNIQUE,
+        crypto TEXT,
+        money BigInt,
+        input_money BigInt,
+        percent TEXT
         );
         """
         await self.execute(sql, execute=True)
@@ -67,7 +71,7 @@ class Database:
         sql = "SELECT * FROM Users"
         return await self.execute(sql, fetch=True)
 
-    async def select_one_users(self, user_id):
+    async def select_one_user(self, user_id):
         sql = "SELECT * FROM Users WHERE user_id=$1"
         return await self.execute(sql, user_id, fetch=True)
 

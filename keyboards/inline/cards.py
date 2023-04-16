@@ -1,21 +1,23 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-rates = InlineKeyboardMarkup(
+cards = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="Premium BTC", callback_data='premiumbtc'
+                text="🅿️ Payeer", callback_data='payeer'
             ),
             InlineKeyboardButton(
-                text="Standart ETH", callback_data='standarteth'
-            ),
-            InlineKeyboardButton(
-                text="Maximum LTC", callback_data='maximumltc'
+                text="🐤 Qiwi", callback_data='qiwi'
             )
         ],
         [
             InlineKeyboardButton(
-                text="◀️ Orqaga", callback_data='back_to_main'
+                text="🔹 Payme", callback_data='payme'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="◀️ Orqaga", callback_data='back_to_rates'
             )
         ]
     ]

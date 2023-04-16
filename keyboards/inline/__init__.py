@@ -1,3 +1,3 @@
 from . import (
-    help, viprates, back
+    help, viprates, back, cards, buying
 )

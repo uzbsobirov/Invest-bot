@@ -1,4 +1,6 @@
+from keyboards.inline.cards import cards
 from loader import dp
+from states.buycrypto import Buy
 from states.viprates import Rate
 from keyboards.default.start import start
 from keyboards.inline.viprates import rates
@@ -21,3 +23,17 @@ async def back_to_rates(call: types.CallbackQuery, state: FSMContext):
     text = "O'zingizga kerakli bo'lgan tarifni tanlang👇"
     await call.message.edit_text(text=text, reply_markup=rates)
     await Rate.rates.set()
+
+@dp.callback_query_handler(text="back_to_rates", state=Buy.crypto)
+async def back_to_rates(call: types.CallbackQuery, state: FSMContext):
+
+    text = "O'zingizga kerakli bo'lgan tarifni tanlang👇"
+    await call.message.edit_text(text=text, reply_markup=rates)
+    await Rate.rates.set()
+
+@dp.callback_query_handler(text="back_to_cards", state=Buy.crypto)
+async def back_to_rates(call: types.CallbackQuery, state: FSMContext):
+
+    text = "<b>📋Quyidagi to'lov turlaridan birini tanlang:</b>"
+    await call.message.edit_text(text=text, reply_markup=cards)
+    await Buy.crypto.set()
