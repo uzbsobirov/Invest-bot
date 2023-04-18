@@ -26,7 +26,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
     if current == 'maximumltc':
         text = "<b>🔹 Kriptovalyuta: Maximum LTC\n" \
                "📋To'lov tizimi: Payeer\n\n" \
-               "💳 Hamyon ( yoki karta ): qiwi karta here\n" \
+               "💳 Hamyon: <code>P1092553472</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, LTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
@@ -36,7 +36,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
     elif current == 'standarteth':
         text = "<b>🔹 Kriptovalyuta: Standart ETH\n" \
                "📋To'lov tizimi: Payeer\n\n" \
-               "💳 Hamyon ( yoki karta ): qiwi karta here\n" \
+               "💳 Hamyon: <code>P1092553472</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, ETH\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
@@ -46,7 +46,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
     else:
         text = "<b>🔹 Kriptovalyuta: Premium BTC\n" \
                "📋To'lov tizimi: Payeer\n\n" \
-               "💳 Hamyon ( yoki karta ): qiwi karta here\n" \
+               "💳 Hamyon: <code>P1092553472</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, BTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
@@ -63,7 +63,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
     if current == 'maximumltc':
         text = "<b>🔹 Kriptovalyuta: Maximum LTC\n" \
                "📋To'lov tizimi: Qiwi\n\n" \
-               "💳 Hamyon ( yoki karta ): qiwi karta here\n" \
+               "💳 Hamyon: <code>79955910342</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, LTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
@@ -73,7 +73,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
     elif current == 'standarteth':
         text = "<b>🔹 Kriptovalyuta: Standart ETH\n" \
                "📋To'lov tizimi: Qiwi\n\n" \
-               "💳 Hamyon ( yoki karta ): qiwi karta here\n" \
+               "💳 Hamyon: <code>79955910342</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, ETH\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
@@ -83,9 +83,11 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
     else:
         text = "<b>🔹 Kriptovalyuta: Premium BTC\n" \
                "📋To'lov tizimi: Qiwi\n\n" \
-               "💳 Hamyon ( yoki karta ): qiwi karta here\n" \
+               "💳 Hamyon: <code>79955910342</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, BTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin. " \
+               "To'lovni tasdiqlash uchun chek yuborish shart!\n\n" \
+               "🔊 To'lovni tasdiqlash uchun shu yerga chekni yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
