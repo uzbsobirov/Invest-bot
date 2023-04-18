@@ -51,7 +51,10 @@ class Database:
         crypto TEXT,
         money BigInt,
         input_money BigInt,
-        percent TEXT
+        percent TEXT,
+        linking TEXT,
+        parent_id BigInt,
+        count BigInt
         );
         """
         await self.execute(sql, execute=True)
@@ -63,9 +66,9 @@ class Database:
         )
         return sql, tuple(parameters.values())
 
-    async def add_user(self, full_name: str, username: str, user_id: int, money: int):
-        sql = "INSERT INTO users (full_name, username, user_id, money) VALUES($1, $2, $3, $4) returning *"
-        return await self.execute(sql, full_name, username, user_id, money, fetchrow=True)
+    async def add_user(self, full_name: str, username: str, user_id: int, money: int, linking: str, parent_id: int, count: int):
+        sql = "INSERT INTO users (full_name, username, user_id, money, linking, parent_id, count) VALUES($1, $2, $3, $4, $5, $6, $7) returning *"
+        return await self.execute(sql, full_name, username, user_id, money, linking, parent_id, count, fetchrow=True)
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"

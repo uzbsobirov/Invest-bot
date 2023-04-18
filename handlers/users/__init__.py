@@ -1,3 +1,3 @@
 from . import (
-    help, start, admin, viprate, backs, buy_crypto, balance, detectors
+    help, start, admin, viprate, backs, buy_crypto, balance, detectors, deep_link, applying
 )
