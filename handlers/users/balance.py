@@ -1,5 +1,6 @@
 import logging
 
+from keyboards.default.start import start
 from keyboards.inline.balance import withdraw, payment
 from loader import dp, db, bot
 from states.balance import Balance
@@ -36,22 +37,30 @@ async def get_card_data(message: types.Message, state: FSMContext):
     user_mention = message.from_user.get_mention(name=full_name)
     user_id = message.from_user.id
 
+    select_user = await db.select_one_user(user_id=user_id)
+
     try:
         splited = msg.split('/')
         card = splited[0]
         owner = splited[1]
-        if (len(card) == 16 and card.startswith('8600') or (len(card) == 16 and card.startswith('9860'))):
-            await message.answer(text="Admin tez orada to'lov qiladi")
-            await bot.send_message(chat_id=-1001749997672,
-                                   text=f"{user_mention} pul yechib olmoqchi\n\n"
-                                        f"👤 <code>{owner}</code>\n💳 <code>{card}</code>\n💰 None"
-                                   , reply_markup=payment)
+        balance = select_user[0][5]
+        if balance >= 100000:
+            if (len(card) == 16 and card.startswith('8600') or (len(card) == 16 and card.startswith('9860'))):
+                await message.answer(text="Admin tez orada to'lov qiladi")
+                await bot.send_message(chat_id=-1001749997672,
+                                       text=f"{user_mention} pul yechib olmoqchi\n\n"
+                                            f"👤 <code>{owner}</code>\n💳 <code>{card}</code>\n💰 {balance} so'm"
+                                       , reply_markup=payment)
 
-            await state.finish()
+                await state.finish()
+            else:
+                await message.answer(text="Yaroqsiz karta boshqattan kiriting\n\n"
+                                          "<code>8600777766668888/Falonchi Falonchiyev</code>")
+                await Balance.data.set()
         else:
-            await message.answer(text="Yaroqsiz karta boshqattan kiriting\n\n"
-                                      "<code>8600777766668888/Falonchi Falonchiyev</code>")
-            await Balance.data.set()
+            await message.answer(text="<b>Botdan faqat eng kam miqdorda 100.000 so'm chiqarib olishingiz mumkin</b>",
+                                 reply_markup=start)
+            await state.finish()
     except Exception as error:
         logging.info(error)
         await message.answer(text="Yaroqsiz karta boshqattan kiriting\n\n"

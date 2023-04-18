@@ -17,7 +17,8 @@ async def bot_start(message: types.Message):
         await db.add_user(
             full_name=full_name,
             username=username,
-            user_id=user_id
+            user_id=user_id,
+            money=0
         )
 
     except:
