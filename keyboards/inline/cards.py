@@ -13,6 +13,9 @@ cards = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="🔹 Payme", callback_data='payme'
+            ),
+            InlineKeyboardButton(
+                text="🔸 Bitcoin", callback_data='bitcoin'
             )
         ],
         [

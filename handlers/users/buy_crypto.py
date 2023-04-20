@@ -91,3 +91,41 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                "To'lovni tasdiqlash uchun chek yuborish shart!\n\n" \
                "🔊 To'lovni tasdiqlash uchun shu yerga chekni yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
+
+
+@dp.callback_query_handler(text="bitcoin", state=Buy.crypto)
+async def buy_anything(call: types.CallbackQuery, state: FSMContext):
+    user_id = call.from_user.id
+
+    data = await state.get_data()
+    current = data.get('current_crypto')
+
+    if current == 'maximumltc':
+        text = "<b>🔹 Kriptovalyuta: Maximum LTC\n" \
+               "📋To'lov tizimi: Bitcoin\n\n" \
+               "💳 Hamyon: <code>P1092553472</code>\n" \
+               f"📝 Izoh: <code>{user_id}</code>, LTC\n\n" \
+               "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
+               "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+        await call.message.edit_text(text=text, reply_markup=buying)
+
+    elif current == 'standarteth':
+        text = "<b>🔹 Kriptovalyuta: Standart ETH\n" \
+               "📋To'lov tizimi: Bitcoin\n\n" \
+               "💳 Hamyon: <code>P1092553472</code>\n" \
+               f"📝 Izoh: <code>{user_id}</code>, ETH\n\n" \
+               "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
+               "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+        await call.message.edit_text(text=text, reply_markup=buying)
+
+    else:
+        text = "<b>🔹 Kriptovalyuta: Premium BTC\n" \
+               "📋To'lov tizimi: Bitcoin\n\n" \
+               "💳 Hamyon: <code>P1092553472</code>\n" \
+               f"📝 Izoh: <code>{user_id}</code>, BTC\n\n" \
+               "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
+               "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+        await call.message.edit_text(text=text, reply_markup=buying)

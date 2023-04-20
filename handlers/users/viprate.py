@@ -18,8 +18,8 @@ async def vip_rates(message: types.Message, state: FSMContext):
 
 @dp.callback_query_handler(text="premiumbtc", state=Rate.rates)
 async def premium_func_btc(call: types.CallbackQuery, state: FSMContext):
-    text = "Premium BTC 👇\n\nPremium BTC <code>5%</code>\n🧾Shartnoma <code>30</code> kun\n" \
-           "Minimal summa: <code>1.000.000</code> sum"
+    text = "Premium BTC 👇\n\nPremium BTC <code>3.4%</code>\n🧾Shartnoma <code>30</code> kun\n" \
+           "Minimal summa: <code>5.000.000</code> sum"
     await call.message.edit_text(text=text, reply_markup=back_btc)
 
     await state.update_data(
@@ -28,7 +28,7 @@ async def premium_func_btc(call: types.CallbackQuery, state: FSMContext):
 
 @dp.callback_query_handler(text="standarteth", state=Rate.rates)
 async def premium_func_btc(call: types.CallbackQuery, state: FSMContext):
-    text = "Standart ETH 👇\n\nStandart ETH <code>3.8%</code>\n🧾Shartnoma <code>30</code> kun\n" \
+    text = "Standart ETH 👇\n\nStandart ETH <code>2.3%</code>\n🧾Shartnoma <code>30</code> kun\n" \
            "Minimal summa: <code>500.000</code> sum"
     await call.message.edit_text(text=text, reply_markup=back_eth)
 
@@ -38,7 +38,7 @@ async def premium_func_btc(call: types.CallbackQuery, state: FSMContext):
 
 @dp.callback_query_handler(text="maximumltc", state=Rate.rates)
 async def premium_func_btc(call: types.CallbackQuery, state: FSMContext):
-    text = "Maximum LTC 👇\n\nMaximum LTC <code>2.5%</code>\n🧾Shartnoma <code>30</code> kun\n" \
+    text = "Maximum LTC 👇\n\nMaximum LTC <code>1.8%</code>\n🧾Shartnoma <code>30</code> kun\n" \
            "Minimal summa: <code>300.000</code> sum"
     await call.message.edit_text(text=text, reply_markup=back_ltc)
 
