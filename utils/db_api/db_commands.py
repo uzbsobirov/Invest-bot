@@ -59,6 +59,16 @@ class Database:
         """
         await self.execute(sql, execute=True)
 
+    async def create_table_sponsor(self):
+        sql = """
+        CREATE TABLE IF NOT EXISTS Sponsor (
+        id SERIAL PRIMARY KEY,
+        chat_id BigInt,
+        username VARCHAR(50)
+        );
+        """
+        await self.execute(sql, execute=True)
+
     @staticmethod
     def format_args(sql, parameters: dict):
         sql += " AND ".join(
@@ -72,6 +82,10 @@ class Database:
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"
+        return await self.execute(sql, fetch=True)
+
+    async def select_all_sponsors(self):
+        sql = "SELECT * FROM Sponsor"
         return await self.execute(sql, fetch=True)
 
     async def select_one_user(self, user_id):
@@ -88,9 +102,13 @@ class Database:
         sql = "SELECT COUNT(*) FROM Users"
         return await self.execute(sql, fetchval=True)
 
-    async def update_user_issubs(self, issubs, user_id):
-        sql = "UPDATE Users SET issubs=$1 WHERE user_id=$2"
-        return await self.execute(sql, issubs, user_id, execute=True)
+    async def update_user_count(self, user_id):
+        sql = "UPDATE Users SET count=count+1 WHERE user_id=$1"
+        return await self.execute(sql, user_id, execute=True)
+
+    async def update_user_money(self, user_id):
+        sql = "UPDATE Users SET money=money+50000 WHERE user_id=$1"
+        return await self.execute(sql, user_id, execute=True)
 
     async def delete_user(self, user_id):
         sql = "DELETE FROM Users WHERE user_id=$1"
