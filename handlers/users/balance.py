@@ -17,9 +17,11 @@ async def uer_balance(message: types.Message, state: FSMContext):
     input_money = select_user[0][6]
     cripto = select_user[0][4]
     percentt = select_user[0][7]
+    current_balance = select_user[0][5]
 
     text = f"💰 Kiritgan summa: {input_sum(item=input_money)}\n" \
-           f"🔹 Kriptovalyuta: {crypto(item=cripto)}\n⏳ Kunlik foiz: {percent(item=percentt)}"
+           f"🔹 Kriptovalyuta: {crypto(item=cripto)}\n⏳ Kunlik foiz: {percent(item=percentt)}\n" \
+           f"💸 Hozirgi balans: {current_balance} so'm"
     await message.answer(text=text, reply_markup=withdraw)
     await Balance.withdraw.set()
 

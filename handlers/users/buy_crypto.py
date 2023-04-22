@@ -1,6 +1,7 @@
+from handlers.users.detectors import detect_crypto
 from keyboards.inline.cards import cards
-from loader import dp
-from keyboards.inline.buying import buying
+from loader import dp, bot
+from keyboards.inline.buying import buying, payload
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -30,7 +31,8 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                f"📝 Izoh: <code>{user_id}</code>, LTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
+               "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
 
     elif current == 'standarteth':
@@ -40,7 +42,8 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                f"📝 Izoh: <code>{user_id}</code>, ETH\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n" \
+               "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
 
     else:
@@ -50,8 +53,11 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                f"📝 Izoh: <code>{user_id}</code>, BTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
+               "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
+
+    await Buy.photo.set()
 
 @dp.callback_query_handler(text="qiwi", state=Buy.crypto)
 async def buy_anything(call: types.CallbackQuery, state: FSMContext):
@@ -67,7 +73,8 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                f"📝 Izoh: <code>{user_id}</code>, LTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
+               "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
 
     elif current == 'standarteth':
@@ -77,7 +84,8 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                f"📝 Izoh: <code>{user_id}</code>, ETH\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
+               "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
 
     else:
@@ -89,8 +97,10 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin. " \
                "To'lovni tasdiqlash uchun chek yuborish shart!\n\n" \
-               "🔊 To'lovni tasdiqlash uchun shu yerga chekni yuboring</b>"
+               "🔊To'lov haqidagi chekni shu yerga yuboring/b>"
         await call.message.edit_text(text=text, reply_markup=buying)
+
+    await Buy.photo.set()
 
 
 @dp.callback_query_handler(text="bitcoin", state=Buy.crypto)
@@ -107,7 +117,8 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                f"📝 Izoh: <code>{user_id}</code>, LTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n" \
+               "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
 
     elif current == 'standarteth':
@@ -117,7 +128,8 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                f"📝 Izoh: <code>{user_id}</code>, ETH\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n" \
+               "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
 
     else:
@@ -127,5 +139,40 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                f"📝 Izoh: <code>{user_id}</code>, BTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
-               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.</b>"
+               "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
+               "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
         await call.message.edit_text(text=text, reply_markup=buying)
+
+    await Buy.photo.set()
+
+@dp.message_handler(state=Buy.photo, content_types=types.ContentType.PHOTO)
+async def confirm_photo(message: types.Message, state: FSMContext):
+    data = await state.get_data()
+    current = data.get('current_crypto')
+
+    photo_id = message.photo[-1].file_id
+    chat_id = -1001749997672
+    user_id = message.from_user.id
+    full_name = message.from_user.full_name
+    user_mention = message.from_user.get_mention(name=full_name)
+
+    await state.update_data(
+        {'user_id': user_id}
+    )
+
+    caption = f"🆔 -> <code>{user_id}</code>\n👤 -> {user_mention}\n💎 -> {detect_crypto(crypto=current)}"
+
+    await bot.send_photo(chat_id=chat_id, photo=photo_id, caption=caption, reply_markup=payload)
+    await bot.send_message(chat_id=message.chat.id, text="Chek adminlarga yuborildi. "
+                                                         "Admin tez orada chekni tekshirib xisobingizni to'ldirishadi")
+
+    # await Buy.checking.set()
+
+
+@dp.callback_query_handler(text="tolash", state=Buy.photo)
+async def customer_datas(call: types.CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    current = data.get('current_crypto')
+    user_id = data.get('user_id')
+
+    print(call.data, current, user_id)

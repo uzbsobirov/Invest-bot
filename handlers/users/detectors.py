@@ -21,3 +21,16 @@ def percent(item):
     else:
         name = item
         return name
+
+def detect_crypto(crypto):
+    if crypto == 'premiumbtc':
+        return '🟢Premium 3.4%'
+
+    elif crypto == 'standarteth':
+        return '🔵Standard  2.3%'
+
+    elif crypto == 'maximumltc':
+        return '🟡 Maximum 1,8%'
+
+    else:
+        pass

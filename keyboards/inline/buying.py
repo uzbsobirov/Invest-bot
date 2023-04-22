@@ -14,3 +14,18 @@ buying = InlineKeyboardMarkup(
         ]
     ]
 )
+
+payload = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="✅ To'lash", callback_data='tolash'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="❌ Bekor qilish", callback_data='bekor_tolov'
+            )
+        ]
+    ]
+)

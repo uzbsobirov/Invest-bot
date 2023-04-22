@@ -54,7 +54,8 @@ class Database:
         percent TEXT,
         linking TEXT,
         parent_id BigInt,
-        count BigInt
+        count BigInt,
+        is_try TEXT
         );
         """
         await self.execute(sql, execute=True)
@@ -76,9 +77,9 @@ class Database:
         )
         return sql, tuple(parameters.values())
 
-    async def add_user(self, full_name: str, username: str, user_id: int, money: int, linking: str, parent_id: int, count: int):
-        sql = "INSERT INTO users (full_name, username, user_id, money, linking, parent_id, count) VALUES($1, $2, $3, $4, $5, $6, $7) returning *"
-        return await self.execute(sql, full_name, username, user_id, money, linking, parent_id, count, fetchrow=True)
+    async def add_user(self, full_name: str, username: str, user_id: int, money: int, linking: str, parent_id: int, count: int, is_try: str):
+        sql = "INSERT INTO users (full_name, username, user_id, money, linking, parent_id, count, is_try) VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *"
+        return await self.execute(sql, full_name, username, user_id, money, linking, parent_id, count, is_try, fetchrow=True)
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"
@@ -109,6 +110,10 @@ class Database:
     async def update_user_money(self, user_id):
         sql = "UPDATE Users SET money=money+50000 WHERE user_id=$1"
         return await self.execute(sql, user_id, execute=True)
+
+    async def update_user_is_try(self, is_try, user_id):
+        sql = "UPDATE Users SET is_try=$1 WHERE user_id=$2"
+        return await self.execute(sql, is_try, user_id, execute=True)
 
     async def delete_user(self, user_id):
         sql = "DELETE FROM Users WHERE user_id=$1"

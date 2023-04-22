@@ -27,7 +27,8 @@ async def bot_start(message: types.Message):
                 money=0,
                 linking=linking,
                 parent_id=int(parent_id),
-                count=0
+                count=0,
+                is_try='yes'
             )
         else:
             await db.add_user(
@@ -37,7 +38,8 @@ async def bot_start(message: types.Message):
                 money=0,
                 linking=linking,
                 parent_id=7,
-                count=0
+                count=0,
+                is_try='no'
             )
 
     except Exception as error:
@@ -46,6 +48,9 @@ async def bot_start(message: types.Message):
     try:
         selection = await db.select_all_sponsors()
 
+        user_select = await db.select_one_user(user_id=user_id)
+        is_try = user_select[0][11]
+
         if selection:
             pass
 
@@ -53,13 +58,16 @@ async def bot_start(message: types.Message):
             start_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga investitsiya " \
                          "kiritib olishingiz mumkin</b>"
 
-
-            if parent_id:
-                if int(parent_id) != int(user_id):
-                    await db.update_user_count(user_id=int(parent_id))
-                    await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
-                    await db.update_user_money(user_id=int(parent_id))
-                    await message.answer(text=start_text, reply_markup=start)
+            if is_try == 'no':
+                if parent_id:
+                    if int(parent_id) != int(user_id):
+                        await db.update_user_count(user_id=int(parent_id))
+                        await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
+                        await db.update_user_money(user_id=int(parent_id))
+                        await db.update_user_is_try(is_try='yes', user_id=user_id)
+                        await message.answer(text=start_text, reply_markup=start)
+                    else:
+                        await message.answer(text=start_text, reply_markup=start)
                 else:
                     await message.answer(text=start_text, reply_markup=start)
             else:
