@@ -4,3 +4,4 @@ class Buy(StatesGroup):
     crypto = State()
     photo = State()
     checking = State()
+    money = State()

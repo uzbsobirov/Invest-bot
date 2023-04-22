@@ -1,3 +1,4 @@
+from filters import IsChannel
 from handlers.users.detectors import detect_crypto
 from keyboards.inline.cards import cards
 from loader import dp, bot
@@ -162,17 +163,24 @@ async def confirm_photo(message: types.Message, state: FSMContext):
 
     caption = f"🆔 -> <code>{user_id}</code>\n👤 -> {user_mention}\n💎 -> {detect_crypto(crypto=current)}"
 
-    await bot.send_photo(chat_id=chat_id, photo=photo_id, caption=caption, reply_markup=payload)
+    await bot.send_photo(chat_id=chat_id, photo=photo_id, caption=caption, reply_markup=payload(user_id=user_id,
+                                                                                                crypto=current))
     await bot.send_message(chat_id=message.chat.id, text="Chek adminlarga yuborildi. "
                                                          "Admin tez orada chekni tekshirib xisobingizni to'ldirishadi")
 
     # await Buy.checking.set()
 
 
-@dp.callback_query_handler(text="tolash", state=Buy.photo)
+@dp.callback_query_handler(text_contains="tolandi_", state='*')
 async def customer_datas(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
     current = data.get('current_crypto')
     user_id = data.get('user_id')
 
-    print(call.data, current, user_id)
+    await call.message.delete()
+    await call.message.answer(text="To'lov summasini shu yerga kiriting\n\nNamuna: 50000")
+    await Buy.money.set()
+
+@dp.channel_post_handler(state=Buy.money)
+async def how_much_money(message: types.Message, state: FSMContext):
+    print(message.text)
