@@ -4,7 +4,8 @@ from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 from aiogram.utils.deep_linking import get_start_link
 
-from keyboards.default.start import start
+from data.config import ADMINS
+from keyboards.default.start import start, start_admin
 from loader import dp, db, bot
 
 
@@ -58,20 +59,38 @@ async def bot_start(message: types.Message):
             start_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga investitsiya " \
                          "kiritib olishingiz mumkin</b>"
 
-            if is_try == 'no':
-                if parent_id:
-                    if int(parent_id) != int(user_id):
-                        await db.update_user_count(user_id=int(parent_id))
-                        await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
-                        await db.update_user_money(user_id=int(parent_id))
-                        await db.update_user_is_try(is_try='yes', user_id=user_id)
-                        await message.answer(text=start_text, reply_markup=start)
+            if int(ADMINS[0]) == int(user_id):
+                if is_try == 'no':
+                    if parent_id:
+                        if int(parent_id) != int(user_id):
+                            await db.update_user_count(user_id=int(parent_id))
+                            await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
+                            await db.update_user_money(user_id=int(parent_id))
+                            await db.update_user_is_try(is_try='yes', user_id=user_id)
+                            await message.answer(text=start_text, reply_markup=start_admin)
+                        else:
+                            await message.answer(text=start_text, reply_markup=start_admin)
+                    else:
+                        await message.answer(text=start_text, reply_markup=start_admin)
+                else:
+                    await message.answer(text=start_text, reply_markup=start_admin)
+
+            else:
+                if is_try == 'no':
+                    if parent_id:
+                        if int(parent_id) != int(user_id):
+                            await db.update_user_count(user_id=int(parent_id))
+                            await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
+                            await db.update_user_money(user_id=int(parent_id))
+                            await db.update_user_is_try(is_try='yes', user_id=user_id)
+                            await message.answer(text=start_text, reply_markup=start)
+                        else:
+                            await message.answer(text=start_text, reply_markup=start)
                     else:
                         await message.answer(text=start_text, reply_markup=start)
                 else:
                     await message.answer(text=start_text, reply_markup=start)
-            else:
-                await message.answer(text=start_text, reply_markup=start)
+
 
     except Exception as err:
         logging.info(err)

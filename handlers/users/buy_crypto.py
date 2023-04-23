@@ -154,7 +154,7 @@ async def confirm_photo(message: types.Message, state: FSMContext):
 
     photo_id = message.photo[-1].file_id
     user_id = message.from_user.id
-    print(user_id)
+    chat_id = -1001749997672
     full_name = message.from_user.full_name
     user_mention = message.from_user.get_mention(name=full_name)
 
@@ -164,29 +164,10 @@ async def confirm_photo(message: types.Message, state: FSMContext):
 
     caption = f"🆔 -> <code>{user_id}</code>\n👤 -> {user_mention}\n💎 -> {detect_crypto(crypto=current)}"
 
-    for admin in ADMINS:
-        await bot.send_photo(chat_id=admin, photo=photo_id, caption=caption, reply_markup=payload)
-        break
+    await bot.send_photo(chat_id=chat_id, photo=photo_id, caption=caption)
 
     await bot.send_message(chat_id=message.chat.id, text="Chek adminlarga yuborildi. "
                                                          "Admin tez orada chekni tekshirib xisobingizni to'ldirishadi")
 
-    await Buy.checking.set()
 
-
-@dp.callback_query_handler(text="accept_payload", state=Buy.checking, user_id=ADMINS[0])
-async def checking_chek(call: types.CallbackQuery, state: FSMContext):
-
-
-    await call.message.delete()
-    await call.message.answer(text="To'lov summasini kiriting\n\nNamuna: <code>50000</code>")
-    await Buy.money.set()
-
-@dp.message_handler(state=Buy.money)
-async def summa_payload(message: types.Message, state: FSMContext):
-    data = await state.get_data()
-    current = data.get('current_crypto')
-    user_id = data.get('user_id')
-
-    print(message.text, current, user_id)
 
