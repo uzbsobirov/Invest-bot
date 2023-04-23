@@ -35,7 +35,9 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
                "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/23", caption=text, reply_markup=buying)
 
     elif current == 'standarteth':
         text = "<b>🔹 Kriptovalyuta: Standart ETH\n" \
@@ -46,7 +48,9 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n" \
                "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/23", caption=text, reply_markup=buying)
 
     else:
         text = "<b>🔹 Kriptovalyuta: Premium BTC\n" \
@@ -57,7 +61,9 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
                "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/23", caption=text, reply_markup=buying)
 
     await Buy.photo.set()
 
@@ -77,7 +83,9 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
                "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/24", caption=text, reply_markup=buying)
 
     elif current == 'standarteth':
         text = "<b>🔹 Kriptovalyuta: Standart ETH\n" \
@@ -88,7 +96,9 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
                "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/24", caption=text, reply_markup=buying)
 
     else:
         text = "<b>🔹 Kriptovalyuta: Premium BTC\n" \
@@ -100,12 +110,14 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin. " \
                "To'lovni tasdiqlash uchun chek yuborish shart!\n\n" \
                "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/24", caption=text, reply_markup=buying)
 
     await Buy.photo.set()
 
 
-@dp.callback_query_handler(text="bitcoin", state=Buy.crypto)
+@dp.callback_query_handler(text="binance", state=Buy.crypto)
 async def buy_anything(call: types.CallbackQuery, state: FSMContext):
     user_id = call.from_user.id
 
@@ -114,36 +126,42 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
 
     if current == 'maximumltc':
         text = "<b>🔹 Kriptovalyuta: Maximum LTC\n" \
-               "📋To'lov tizimi: Bitcoin\n\n" \
+               "📋To'lov tizimi: Binance\n\n" \
                "💳 Hamyon: <code>P1092553472</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, LTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n" \
                "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/26", caption=text, reply_markup=buying)
 
     elif current == 'standarteth':
         text = "<b>🔹 Kriptovalyuta: Standart ETH\n" \
-               "📋To'lov tizimi: Bitcoin\n\n" \
+               "📋To'lov tizimi: Binance\n\n" \
                "💳 Hamyon: <code>P1092553472</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, ETH\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n" \
                "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/26", caption=text, reply_markup=buying)
 
     else:
         text = "<b>🔹 Kriptovalyuta: Premium BTC\n" \
-               "📋To'lov tizimi: Bitcoin\n\n" \
+               "📋To'lov tizimi: Binance\n\n" \
                "💳 Hamyon: <code>P1092553472</code>\n" \
                f"📝 Izoh: <code>{user_id}</code>, BTC\n\n" \
                "❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki " \
                "noto'g'ri kiritsangiz hisobingizga pul tushmaydi! " \
                "Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin." \
                "\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-        await call.message.edit_text(text=text, reply_markup=buying)
+
+        await call.message.delete()
+        await call.message.answer_photo(photo="https://t.me/metago_medias/26", caption=text, reply_markup=buying)
 
     await Buy.photo.set()
 

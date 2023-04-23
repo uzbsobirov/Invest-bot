@@ -26,14 +26,16 @@ async def back_to_rates(call: types.CallbackQuery, state: FSMContext):
 
 @dp.callback_query_handler(text="back_to_rates", state=Buy.crypto)
 async def back_to_rates(call: types.CallbackQuery, state: FSMContext):
+    await call.message.delete()
 
     text = "O'zingizga kerakli bo'lgan tarifni tanlang👇"
-    await call.message.edit_text(text=text, reply_markup=rates)
+    await call.message.answer(text=text, reply_markup=rates)
     await Rate.rates.set()
 
-@dp.callback_query_handler(text="back_to_cards", state=Buy.crypto)
+@dp.callback_query_handler(text="back_to_cards", state=Buy.photo)
 async def back_to_rates(call: types.CallbackQuery, state: FSMContext):
+    await call.message.delete()
 
     text = "<b>📋Quyidagi to'lov turlaridan birini tanlang:</b>"
-    await call.message.edit_text(text=text, reply_markup=cards)
+    await call.message.answer(text=text, reply_markup=cards)
     await Buy.crypto.set()

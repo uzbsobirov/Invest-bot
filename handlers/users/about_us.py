@@ -45,82 +45,31 @@ async def about_us_func(message: types.Message, state: FSMContext):
 
 
     # First media
-    with open(file='media/video1.mp4', mode='rb') as video1:
-        media1.attach_video(video=video1, caption=text1)
-    video1.close()
+    media1.attach_video(video="https://t.me/metago_medias/15", caption=text1)
 
+    # Second media
+    media2.attach_photo(photo="https://t.me/metago_medias/2", caption=text2)
+    media2.attach_photo(photo="https://t.me/metago_medias/3")
+    media2.attach_photo(photo="https://t.me/metago_medias/4")
+    media2.attach_photo(photo="https://t.me/metago_medias/5")
+    media2.attach_photo(photo="https://t.me/metago_medias/6")
+    media2.attach_photo(photo="https://t.me/metago_medias/7")
 
-    # # Second description
-    # with open(file='media/photo2.jpg', mode='rb') as photo2_1:
-    #     media2.attach_photo(photo=photo2_1)
-    # photo2_1.close()
-    #
-    # with open(file='media/photo2_2.jpg', mode='rb') as photo2_2:
-    #     media2.attach_photo(photo=photo2_2)
-    # photo2_2.close()
-    #
-    # with open(file='media/photo2_3.jpg', mode='rb') as photo2_3:
-    #     media2.attach_photo(photo=photo2_3)
-    # photo2_3.close()
-    #
-    # with open(file='media/photo2_4.jpg', mode='rb') as photo2_4:
-    #     media2.attach_photo(photo=photo2_4)
-    # photo2_4.close()
-    #
-    # with open(file='media/photo2_5.jpg', mode='rb') as photo2_5:
-    #     media2.attach_photo(photo=photo2_5)
-    # photo2_5.close()
-    #
-    # with open(file='media/photo2_6.jpg', mode='rb') as photo2_6:
-    #     media2.attach_photo(photo=photo2_6)
-    # photo2_6.close()
-    #
-    # with open(file='media/photo2_7.jpg', mode='rb') as photo2_7:
-    #     media2.attach_photo(photo=photo2_7)
-    # photo2_7.close()
-    #
-    #
-    # # Third medias
-    # with open(file='media/photo3.jpg', mode='rb') as photo3:
-    #     media2.attach_photo(photo=photo3)
-    # photo3.close()
-    #
-    # with open(file='media/photo3_2.jpg', mode='rb') as photo3_2:
-    #     media2.attach_photo(photo=photo3_2)
-    # photo3_2.close()
-    #
-    # with open(file='media/photo3_3.jpg', mode='rb') as photo3_3:
-    #     media2.attach_photo(photo=photo3_3)
-    # photo3_3.close()
-    #
-    # with open(file='media/photo3_4.mp4', mode='rb') as photo3_4:
-    #     media2.attach_photo(photo=photo3_4)
-    # photo3_4.close()
-    #
-    # with open(file='media/photo3_5.jpg', mode='rb') as photo3_5:
-    #     media2.attach_photo(photo=photo3_5)
-    # photo3_5.close()
-    #
-    # with open(file='media/video3.mp4', mode='rb') as video_3:
-    #     media2.attach_photo(photo=video_3)
-    # video_3.close()
-    #
-    # with open(file='media/video3_2.mp4', mode='rb') as video3_2:
-    #     media2.attach_photo(photo=video3_2)
-    # video3_2.close()
-    #
-    # with open(file='media/video3_3.mp4', mode='rb') as video3_3:
-    #     media2.attach_photo(photo=video3_3)
-    # video3_3.close()
-
+    # Third media
+    media3.attach_photo(photo="https://t.me/metago_medias/8", caption=text3)
+    media3.attach_video(video="https://t.me/metago_medias/12")
+    media3.attach_photo(photo="https://t.me/metago_medias/9")
+    media3.attach_video(video="https://t.me/metago_medias/16")
+    media3.attach_photo(photo="https://t.me/metago_medias/10")
+    media3.attach_video(video="https://t.me/metago_medias/17")
+    media3.attach_photo(photo="https://t.me/metago_medias/11")
+    media3.attach_video(video="https://t.me/metago_medias/18")
+    media3.attach_photo(photo="https://t.me/metago_medias/13")
 
 
 
     await message.answer_media_group(media=media1)
-    await message.answer(text=text1)
 
-    # await message.answer_media_group(media=media2)
-    # await message.answer(text=text2)
-    #
-    # await message.answer_media_group(media=media3)
-    # await message.answer(text=text3)
+    await message.answer_media_group(media=media2)
+
+    await message.answer_media_group(media=media3)

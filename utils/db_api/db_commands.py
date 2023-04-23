@@ -111,9 +111,9 @@ class Database:
         sql = "UPDATE Users SET money=money+50000 WHERE user_id=$1"
         return await self.execute(sql, user_id, execute=True)
 
-    async def update_user_money_pay(self, user_id):
-        sql = f"UPDATE Users SET money=money+50000 WHERE user_id=$1"
-        return await self.execute(sql, user_id, execute=True)
+    async def update_user_money_pay(self, money, user_id):
+        sql = f"UPDATE Users SET money=money+{money} WHERE user_id=$1"
+        return await self.execute(sql, money, user_id, execute=True)
 
     async def update_user_is_try(self, is_try, user_id):
         sql = "UPDATE Users SET is_try=$1 WHERE user_id=$2"

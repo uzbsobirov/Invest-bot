@@ -52,7 +52,7 @@ async def get_money(message: types.Message, state: FSMContext):
         await bot.send_message(chat_id=message.chat.id, text=f"Foydalanuvchi balansi {money} so'm bilan to'ldirildi✅")
         await bot.send_message(chat_id=customer_id, text=f"Hisobingiz {money} so'm bilan to'ldirildi, "
                                                          f"iltimos hisobingizni tekshiring")
-        await db.update_user_money_pay(user_id=customer_id)
+        await db.update_user_money_pay(money=money, user_id=customer_id)
         await state.finish()
     except Exception as error:
         logging.info(error)
