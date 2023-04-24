@@ -5,3 +5,6 @@ class Buy(StatesGroup):
     photo = State()
     checking = State()
     money = State()
+
+class EveryDay(StatesGroup):
+    paytime = State()

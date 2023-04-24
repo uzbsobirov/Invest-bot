@@ -34,3 +34,13 @@ def detect_crypto(crypto):
 
     else:
         pass
+
+def detect_percent(crypto):
+    if crypto == 'premiumbtc':
+        return 3.4
+
+    elif crypto == 'standarteth':
+        return 2.3
+
+    else:
+        return 1.8

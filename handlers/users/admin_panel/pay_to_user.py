@@ -1,7 +1,11 @@
 import logging
+import schedule
 
+from handlers.users.detectors import detect_crypto, detect_percent
+from handlers.users.everyday_pay import main
 from loader import dp, bot, db
 from states.paying import Pay
+from states.buycrypto import EveryDay
 from keyboards.inline.admin import cryptos
 
 from aiogram import types
@@ -19,12 +23,21 @@ async def get_user_id(message: types.Message, state: FSMContext):
 
     try:
         id = int(message.text)
-        await state.update_data(
-            {'customer_id': id}
-        )
-        await message.answer(text="Yaxshi endi foydalanuvchi qaysi kriptovalyuta olganini tanlang👇",
-                             reply_markup=cryptos)
-        await Pay.crypto.set()
+
+        select_user = await db.select_one_user(user_id=id)
+        customer_crypto = select_user[0][4]
+
+        if customer_crypto:
+            await message.answer(text=f"Kechirasiz bu foydalanuvchi "
+                                      f"<code>{detect_crypto(crypto=customer_crypto)}</code> ni sotib olgan ekan")
+
+        else:
+            await state.update_data(
+                {'customer_id': id}
+            )
+            await message.answer(text="Yaxshi endi foydalanuvchi qaysi kriptovalyuta olganini tanlang👇",
+                                 reply_markup=cryptos)
+            await Pay.crypto.set()
     except Exception as error:
         logging.info(error)
         await message.answer(text="Iltimos faqat raqamlardan foydalaning\n\nNamuna: <code>1393587687</code>")
@@ -47,20 +60,24 @@ async def get_money(message: types.Message, state: FSMContext):
     data = await state.get_data()
     customer_id = data.get('customer_id')
     customer_crypto = data.get('customer_crypto')
-    try:
-        money = int(message.text)
 
-        await bot.send_message(chat_id=message.chat.id, text=f"Foydalanuvchi balansi {money} so'm bilan to'ldirildi✅")
-        await bot.send_message(chat_id=customer_id, text=f"Hisobingiz {money} so'm bilan to'ldirildi, "
-                                                         f"iltimos hisobingizni tekshiring")
+    # try:
+    money = int(message.text)
 
-        before_select_user = await db.select_one_user(user_id=customer_id)
-        before_money = before_select_user[0][5]
-        set_current_money = money + before_money
-        await db.update_user_money_pay(money=set_current_money,
-                                                    crypto=customer_crypto, user_id=customer_id)
-        await state.finish()
-    except Exception as error:
-        logging.info(error)
-        await message.answer(text="Iltimos faqat raqamlardan foydalaning\n\nNamuna: <code>1393587687</code>")
-        await Pay.id.set()
+    await bot.send_message(chat_id=message.chat.id, text=f"Foydalanuvchi balansi {money} so'm bilan to'ldirildi✅")
+    await bot.send_message(chat_id=customer_id, text=f"Hisobingiz {money} so'm bilan to'ldirildi, "
+                                                     f"iltimos hisobingizni tekshiring")
+
+    before_select_user = await db.select_one_user(user_id=customer_id)
+    before_money = before_select_user[0][5]
+    set_current_money = money + before_money
+    await db.update_user_money_pay(money=set_current_money,
+                                                crypto=customer_crypto, date=30, user_id=customer_id)
+
+
+    # except Exception as error:
+    #     logging.info(error)
+    #     await message.answer(text="Iltimos faqat raqamlardan foydalaning\n\nNamuna: <code>1393587687</code>")
+    #     await Pay.id.set()
+
+
