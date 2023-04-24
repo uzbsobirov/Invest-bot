@@ -46,13 +46,19 @@ async def get_crypto(call: types.CallbackQuery, state: FSMContext):
 async def get_money(message: types.Message, state: FSMContext):
     data = await state.get_data()
     customer_id = data.get('customer_id')
+    customer_crypto = data.get('customer_crypto')
     try:
         money = int(message.text)
 
         await bot.send_message(chat_id=message.chat.id, text=f"Foydalanuvchi balansi {money} so'm bilan to'ldirildi✅")
         await bot.send_message(chat_id=customer_id, text=f"Hisobingiz {money} so'm bilan to'ldirildi, "
                                                          f"iltimos hisobingizni tekshiring")
-        await db.update_user_money_pay(money=money, user_id=customer_id)
+
+        before_select_user = await db.select_one_user(user_id=customer_id)
+        before_money = before_select_user[0][5]
+        set_current_money = money + before_money
+        await db.update_user_money_pay(money=set_current_money,
+                                                    crypto=customer_crypto, user_id=customer_id)
         await state.finish()
     except Exception as error:
         logging.info(error)
