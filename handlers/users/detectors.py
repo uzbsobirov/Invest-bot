@@ -1,3 +1,5 @@
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
 def input_sum(item):
     if item is None:
         name = "<code>Kiritilmagan</code>"
@@ -44,3 +46,13 @@ def detect_percent(crypto):
 
     else:
         return 1.8
+
+def detect_markups(markups):
+    markup = InlineKeyboardMarkup(row_width=1)
+    for item in markups:
+        markup.insert(
+            InlineKeyboardButton(
+                text=item[0].text, url=item[0].url
+            )
+        )
+    return markup

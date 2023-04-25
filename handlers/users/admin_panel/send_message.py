@@ -1,6 +1,7 @@
 import logging
 
-from loader import dp, db
+from handlers.users.detectors import detect_markups
+from loader import dp, db, bot
 from states.admin import Panel
 
 from aiogram.dispatcher import FSMContext
@@ -16,9 +17,18 @@ async def send_messages_to_users(call: types.CallbackQuery, state: FSMContext):
 async def get_message_datas(message: types.Message, state: FSMContext):
     file_id = message.photo[-1].file_id
 
+    users = await db.select_all_users()
+
     if 'reply_markup' in message:
         if 'caption' in message:
-            print('caption, markp')
+            caption = message.caption
+            markups = message.reply_markup.inline_keyboard
+
+            for user in users:
+                user_id = user[3]
+                await bot.send_photo(chat_id=user_id, photo=file_id, caption=caption,
+                                     reply_markup=detect_markups(markups=markups))
+
         else:
             print('markup')
 
