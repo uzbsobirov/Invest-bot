@@ -17,6 +17,11 @@ admin = InlineKeyboardMarkup(
             InlineKeyboardButton(
                 text="➕ Pul kiritish", callback_data='pay_to_user'
             )
+        ],
+        [
+            InlineKeyboardButton(
+                text="◀️ Orqaga", callback_data='back'
+            )
         ]
     ]
 )

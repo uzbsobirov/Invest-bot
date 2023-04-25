@@ -44,3 +44,14 @@ back_ltc = InlineKeyboardMarkup(
         ]
     ]
 )
+
+
+back = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="◀️ Orqaga", callback_data='back'
+            )
+        ]
+    ]
+)

@@ -5,7 +5,7 @@ from aiogram.dispatcher import FSMContext
 from data.config import ADMINS
 from keyboards.inline.admin import admin
 from loader import dp, db, bot
-
+from states.admin import Panel
 
 
 @dp.message_handler(text="/reklama", user_id=ADMINS)
@@ -19,3 +19,4 @@ async def send_ad_to_all(message: types.Message):
 @dp.message_handler(text="💻 Admin panel", state='*')
 async def admin_panel(message: types.Message, state: FSMContext):
     await message.answer(text="<b>Admin panelga xush kelibsiz</b>", reply_markup=admin)
+    await Panel.admin_menu.set()

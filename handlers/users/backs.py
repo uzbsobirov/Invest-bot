@@ -1,10 +1,12 @@
+from data.config import ADMINS
+from keyboards.inline.admin import admin
 from keyboards.inline.cards import cards
 from loader import dp
+from states.admin import Panel
 from states.buycrypto import Buy
 from states.viprates import Rate
-from keyboards.default.start import start
 from keyboards.inline.viprates import rates
-
+from keyboards.default.start import start, start_admin
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
@@ -39,3 +41,22 @@ async def back_to_rates(call: types.CallbackQuery, state: FSMContext):
     text = "<b>📋Quyidagi to'lov turlaridan birini tanlang:</b>"
     await call.message.answer(text=text, reply_markup=cards)
     await Buy.crypto.set()
+
+@dp.callback_query_handler(text="back", state=Panel.statics)
+async def back_to_admin_menu(call: types.CallbackQuery, state: FSMContext):
+    await call.message.edit_text(text="<b>Admin panelga xush kelibsiz</b>", reply_markup=admin)
+    await Panel.admin_menu.set()
+
+@dp.callback_query_handler(text="back", state=Panel.admin_menu)
+async def back_to_main_menu(call: types.CallbackQuery, state: FSMContext):
+    user_id = call.from_user.id
+
+    await call.message.delete()
+
+    if int(user_id) != int(ADMINS[0]):
+        await call.message.answer(text="<b>Asosiy menu</b>", reply_markup=start)
+
+    else:
+        await call.message.answer(text="<b>Asosiy menu</b>", reply_markup=start_admin)
+
+    await state.finish()

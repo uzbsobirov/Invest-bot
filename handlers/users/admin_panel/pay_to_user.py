@@ -2,7 +2,6 @@ import logging
 import schedule
 
 from handlers.users.detectors import detect_crypto, detect_percent
-from handlers.users.everyday_pay import main
 from loader import dp, bot, db
 from states.paying import Pay
 from states.buycrypto import EveryDay

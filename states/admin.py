@@ -1,0 +1,8 @@
+from aiogram.dispatcher.filters.state import StatesGroup, State
+
+class Panel(StatesGroup):
+    admin_menu = State() #Admin menu
+
+    statics = State() # Statics
+
+    datas = State() # Send message datas
