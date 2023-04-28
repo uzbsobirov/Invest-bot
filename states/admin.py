@@ -6,3 +6,5 @@ class Panel(StatesGroup):
     statics = State() # Statics
 
     datas = State() # Send message datas
+
+    sponsor = State() # Set channel

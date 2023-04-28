@@ -46,3 +46,22 @@ cryptos = InlineKeyboardMarkup(
         ]
     ]
 )
+
+
+channels_menu = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="🗑 Kanalni o'chirish", callback_data='channel_delete'
+            ),
+            InlineKeyboardButton(
+                text="➕ Kanal qo'shish", callback_data='add_channel'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="◀️ Orqaga", callback_data='back'
+            )
+        ]
+    ]
+)
