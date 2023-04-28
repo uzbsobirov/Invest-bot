@@ -60,7 +60,7 @@ channels_menu = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="◀️ Orqaga", callback_data='back'
+                text="◀️ Orqaga", callback_data='back_to_admin_menu'
             )
         ]
     ]
@@ -75,7 +75,7 @@ channels_menuu = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="◀️ Orqaga", callback_data='back'
+                text="◀️ Orqaga", callback_data='back_to_admin_menu'
             )
         ]
     ]

@@ -3,6 +3,7 @@ import logging
 from aiogram.utils.exceptions import BadRequest
 from asyncpg import UniqueViolationError
 
+from keyboards.default.start import start_admin
 from keyboards.inline.back import back_sponsor
 from loader import dp, db, bot
 from states.admin import Panel
@@ -28,6 +29,10 @@ async def set_sponsor(call: types.CallbackQuery, state: FSMContext):
             count += 1
         await call.message.delete()
         await call.message.answer(text=text, reply_markup=channels_menu, disable_web_page_preview=True)
+        await state.update_data(
+            {'text_channels': text}
+        )
+
     except Exception as error:
         logging.info(error)
         await call.message.edit_text(text="Sizda hali homiy kanallar yo'q❗️", reply_markup=channels_menuu)
@@ -43,8 +48,6 @@ async def add_sponsor(call: types.CallbackQuery, state: FSMContext):
 @dp.message_handler(state=Panel.get_id)
 async def get_sponsor_channel_id(message: types.Message, state: FSMContext):
     chat_id = message.forward_from_chat.id
-    title = message.forward_from_chat.title
-    username = message.forward_from_chat.username
 
 
     get_me = await bot.get_me()
@@ -71,4 +74,27 @@ async def get_sponsor_channel_id(message: types.Message, state: FSMContext):
         await message.answer(text="Bu kanal aval qo'shilgan ekan")
         await Panel.get_id.set()
 
+
+
+# <-------------DELETE CHANNEL----------------->
+@dp.callback_query_handler(text="channel_delete", state=Panel.sponsor)
+async def delete_channel(call: types.CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    text_channels = data.get('text_channels')
+
+    await call.message.edit_text(text=f"O'chirmoqchi bo'lgan kanal idsini kiriting👇\n{text_channels}",
+                                 disable_web_page_preview=True)
+    await Panel.chat_id.set()
+
+@dp.message_handler(state=Panel.chat_id)
+async def get_deleted_channel_id(message: types.Message, state: FSMContext):
+    try:
+        chat_id = int(message.text)
+        await db.delete_channel(chat_id=chat_id)
+        await message.answer(text="Kanal homiylar ro'yhatidan o'chirildi✅", reply_markup=start_admin)
+        await state.finish()
+    except ValueError as valerr:
+        logging.info(valerr)
+        await message.answer(text="Faqat homiy id sini kiriting!!!")
+        await Panel.chat_id.set()
     

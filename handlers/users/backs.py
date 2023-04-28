@@ -51,7 +51,10 @@ async def back_to_admin_menu(call: types.CallbackQuery, state: FSMContext):
 async def back_to_main_menu(call: types.CallbackQuery, state: FSMContext):
     user_id = call.from_user.id
 
-    await call.message.delete()
+    try:
+        await call.message.delete()
+    except:
+        pass
 
     if int(user_id) != int(ADMINS[0]):
         await call.message.answer(text="<b>Asosiy menu</b>", reply_markup=start)
@@ -60,3 +63,13 @@ async def back_to_main_menu(call: types.CallbackQuery, state: FSMContext):
         await call.message.answer(text="<b>Asosiy menu</b>", reply_markup=start_admin)
 
     await state.finish()
+
+@dp.callback_query_handler(text="back_to_admin_menu", state=Panel.sponsor)
+async def back_to_admin_menu(call: types.CallbackQuery, state: FSMContext):
+    await call.message.edit_text(text="<b>Admin panelga xush kelibsiz</b>", reply_markup=admin)
+    await Panel.admin_menu.set()
+
+@dp.callback_query_handler(text="back_sponsor", state=Panel.get_id)
+async def back_to_admin_menu(call: types.CallbackQuery, state: FSMContext):
+    await call.message.edit_text(text="<b>Admin panelga xush kelibsiz</b>", reply_markup=admin)
+    await Panel.admin_menu.set()

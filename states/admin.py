@@ -9,3 +9,5 @@ class Panel(StatesGroup):
 
     sponsor = State() # Set channel
     get_id = State()
+    chat_id = State()
+
