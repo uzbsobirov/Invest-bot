@@ -65,3 +65,18 @@ channels_menu = InlineKeyboardMarkup(
         ]
     ]
 )
+
+channels_menuu = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="➕ Kanal qo'shish", callback_data='add_channel'
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="◀️ Orqaga", callback_data='back'
+            )
+        ]
+    ]
+)

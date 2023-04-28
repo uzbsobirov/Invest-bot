@@ -55,3 +55,13 @@ back = InlineKeyboardMarkup(
         ]
     ]
 )
+
+back_sponsor = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="◀️ Orqaga", callback_data='back_sponsor'
+            )
+        ]
+    ]
+)

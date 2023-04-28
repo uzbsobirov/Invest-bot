@@ -1,3 +1,3 @@
 from . import (
-    help, viprates, back, cards, buying, balance, apply, deeplink, admin
+    help, admin, viprates, back, cards, buying, balance, apply, deeplink
 )

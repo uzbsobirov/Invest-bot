@@ -8,3 +8,4 @@ class Panel(StatesGroup):
     datas = State() # Send message datas
 
     sponsor = State() # Set channel
+    get_id = State()

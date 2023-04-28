@@ -65,7 +65,7 @@ class Database:
         sql = """
         CREATE TABLE IF NOT EXISTS Sponsor (
         id SERIAL PRIMARY KEY,
-        chat_id BigInt,
+        chat_id BigInt UNIQUE,
         username VARCHAR(50)
         );
         """
@@ -81,6 +81,11 @@ class Database:
     async def add_user(self, full_name: str, username: str, user_id: int, money: int, linking: str, parent_id: int, count: int, is_try: str):
         sql = "INSERT INTO users (full_name, username, user_id, money, linking, parent_id, count, is_try) VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *"
         return await self.execute(sql, full_name, username, user_id, money, linking, parent_id, count, is_try, fetchrow=True)
+
+    async def add_sponsor(self, chat_id: int):
+        sql = "INSERT INTO Sponsor (chat_id) VALUES($1) returning *"
+        return await self.execute(sql, chat_id, fetchrow=True)
+
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"
