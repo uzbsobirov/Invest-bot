@@ -3,11 +3,16 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from loader import dp, db, bot
+from states.admin import Panel
 from utils.misc.subs import check
 from data.config import ADMINS
 from keyboards.default.start import start, start_admin
-@dp.callback_query_handler(text="check_subs", state='*')
+@dp.callback_query_handler(text="check_subs", state=Panel.check_is_sub)
 async def check_func(call: types.CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    parent_id = data.get('parent_id')
+
+
     user_id = call.from_user.id
     full_name = call.from_user.id
 
@@ -32,10 +37,49 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
             await call.message.delete()
             text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu " \
                    "bot orqali kriptovalyutalarga investitsiya kiritib olishingiz mumkin</b>"
+
+            user_select = await db.select_one_user(user_id=user_id)
+            is_try = user_select[0][11]
+
             if user_id == int(ADMINS[0]):
+                if is_try == 'no':
+                    if parent_id:
+                            if int(parent_id) != int(user_id):
+                                await db.update_user_count(user_id=int(parent_id))
+                                await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
+                                await db.update_user_money(user_id=int(parent_id))
+                                await db.update_user_is_try(is_try='yes', user_id=user_id)
+                                await call.message.answer(text=text, reply_markup=start_admin)
+                            else:
+                                await call.message.answer(text=text, reply_markup=start_admin)
+
+                    else:
+                        await call.message.answer(text=text, reply_markup=start_admin)
+
+                else:
+                    await call.message.answer(text=text, reply_markup=start_admin)
+
+
                 await call.message.answer(text=text, reply_markup=start_admin)
+
             else:
                 await call.message.answer(text=text, reply_markup=start)
+
+                if is_try == 'no':
+                    if parent_id:
+                        if int(parent_id) != int(user_id):
+                            await db.update_user_count(user_id=int(parent_id))
+                            await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
+                            await db.update_user_money(user_id=int(parent_id))
+                            await db.update_user_is_try(is_try='yes', user_id=user_id)
+                            await call.message.answer(text=text, reply_markup=start)
+
+                        else:
+                            await call.message.answer(text=text, reply_markup=start)
+                    else:
+                        await call.message.answer(text=text, reply_markup=start)
+                else:
+                    await call.message.answer(text=text, reply_markup=start)
 
             await state.finish()
         else:
@@ -43,7 +87,7 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
             await call.message.answer(text="<b>❌Siz ba'zi kanallardan chiqib ketgansiz, agar kanallarga "
                                            "ulanmasangiz botni ishlata olmaysiz</b>", reply_markup=result,
                                       disable_web_page_preview=True)
-            await state.finish()
+
     else:
         await call.message.delete()
         text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu " \
@@ -52,3 +96,7 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
             await call.message.answer(text=text, reply_markup=start_admin)
         else:
             await call.message.answer(text=text, reply_markup=start)
+
+        await state.finish()
+
+

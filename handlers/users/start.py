@@ -9,6 +9,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from data.config import ADMINS
 from keyboards.default.start import start, start_admin
 from loader import dp, db, bot
+from states.admin import Panel
 from utils.misc.subs import check
 
 
@@ -21,6 +22,9 @@ async def bot_start(message: types.Message, state: FSMContext):
     linking = await get_start_link(user_id)
     parent_id = message.get_args()
 
+    await state.update_data(
+        {'parent_id': parent_id}
+    )
 
     # Add the User to the DB
     try:
@@ -59,17 +63,17 @@ async def bot_start(message: types.Message, state: FSMContext):
         if selection:
             for row in selection:
                 status = await check(user_id=user_id, channel=row[1])
-            if not status != False:
-                markup = InlineKeyboardMarkup(row_width=1)
-                for channel in selection:
-                    chat = await bot.get_chat(channel[1])
-                    invite_link = await chat.export_invite_link()
-                    markup.insert(InlineKeyboardButton(text=chat.title, url=invite_link))
-                markup.add(InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data='check_subs'))
-                text = f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy kanallarimizga a'zo " \
-                       f"bo'ling"
-                await message.answer(text=text, reply_markup=markup, disable_web_page_preview=True)
-                await state.finish()
+                if not status != False:
+                    markup = InlineKeyboardMarkup(row_width=1)
+                    for channel in selection:
+                        chat = await bot.get_chat(channel[1])
+                        invite_link = await chat.export_invite_link()
+                        markup.insert(InlineKeyboardButton(text=chat.title, url=invite_link))
+                    markup.add(InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data='check_subs'))
+                    text = f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy kanallarimizga a'zo " \
+                           f"bo'ling"
+                    await message.answer(text=text, reply_markup=markup, disable_web_page_preview=True)
+                    await Panel.check_is_sub.set()
 
 
             else:

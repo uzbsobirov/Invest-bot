@@ -56,7 +56,8 @@ class Database:
         parent_id BigInt,
         count BigInt,
         is_try TEXT,
-        date BigInt
+        date BigInt,
+        friend_id BigInt
         );
         """
         await self.execute(sql, execute=True)

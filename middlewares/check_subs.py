@@ -1,5 +1,9 @@
 import logging
+
+from aiogram.dispatcher import FSMContext
+
 from loader import dp, db, bot
+from states.admin import Panel
 from utils.misc.subs import check
 from aiogram.dispatcher.handler import CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
@@ -36,6 +40,7 @@ class BigBrother(BaseMiddleware):
                              "Botdan foydalanish uchun homiy kanallarimizga qayta a'zo bo'ling👇</b>"
             markup.insert(types.InlineKeyboardButton(text=channel.title, url=invite_link))
             markup.insert(types.InlineKeyboardButton(text="A'zo bo'ldim ✅", callback_data='check_subs'))
+            await Panel.check_is_sub.set()
 
             if not final_status:
                 await update.message.delete()

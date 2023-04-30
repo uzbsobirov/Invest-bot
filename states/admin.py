@@ -11,3 +11,5 @@ class Panel(StatesGroup):
     get_id = State()
     chat_id = State()
 
+    check_is_sub = State()
+
