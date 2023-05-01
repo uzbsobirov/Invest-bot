@@ -73,7 +73,7 @@ async def bot_start(message: types.Message, state: FSMContext):
                     text = f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy kanallarimizga a'zo " \
                            f"bo'ling"
                     await message.answer(text=text, reply_markup=markup, disable_web_page_preview=True)
-                    await Panel.check_is_sub.set()
+                    # await Panel.check_is_sub.set()
 
 
             else:

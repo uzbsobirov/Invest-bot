@@ -14,6 +14,8 @@ from aiogram import types
 class BigBrother(BaseMiddleware):
     async def on_pre_process_update(self, update: types.Update, data: dict):
         if update.message:
+            if update.message.text != '/start':
+                return
             user = update.message.from_user.id
             if update.message.text in ['/help']:
                 return
@@ -38,7 +40,7 @@ class BigBrother(BaseMiddleware):
                 if not status:
                     result = "<b>Siz bizni homiy kanallardan chiqib ketgansiz❗️\n\n" \
                              "Botdan foydalanish uchun homiy kanallarimizga qayta a'zo bo'ling👇</b>"
-            markup.insert(types.InlineKeyboardButton(text=channel.title, url=invite_link))
+                markup.insert(types.InlineKeyboardButton(text=channel.title, url=invite_link))
             markup.insert(types.InlineKeyboardButton(text="A'zo bo'ldim ✅", callback_data='check_subs'))
 
 

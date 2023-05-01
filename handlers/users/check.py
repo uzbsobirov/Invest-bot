@@ -7,7 +7,7 @@ from states.admin import Panel
 from utils.misc.subs import check
 from data.config import ADMINS
 from keyboards.default.start import start, start_admin
-@dp.callback_query_handler(text="check_subs", state=Panel.check_is_sub)
+@dp.callback_query_handler(text="check_subs", state='*')
 async def check_func(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
     parent_id = data.get('parent_id')
