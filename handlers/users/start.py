@@ -63,7 +63,7 @@ async def bot_start(message: types.Message, state: FSMContext):
         if selection:
             for row in selection:
                 status = await check(user_id=user_id, channel=row[1])
-                if not status != False:
+                if status == False:
                     markup = InlineKeyboardMarkup(row_width=1)
                     for channel in selection:
                         chat = await bot.get_chat(channel[1])
@@ -73,44 +73,49 @@ async def bot_start(message: types.Message, state: FSMContext):
                     text = f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy kanallarimizga a'zo " \
                            f"bo'ling"
                     await message.answer(text=text, reply_markup=markup, disable_web_page_preview=True)
-                    # await Panel.check_is_sub.set()
+
+                    if parent_id:
+                        await db.update_user_count(user_id=int(parent_id))
+                        await db.update_user_money(user_id=int(parent_id))
+                    else:
+                        pass
 
 
-            else:
-                start_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga investitsiya " \
-                             "kiritib olishingiz mumkin</b>"
+                else:
+                    start_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga investitsiya " \
+                                 "kiritib olishingiz mumkin</b>"
 
-                if int(ADMINS[0]) == int(user_id):
-                    if is_try == 'no':
-                        if parent_id:
-                            if int(parent_id) != int(user_id):
-                                await db.update_user_count(user_id=int(parent_id))
-                                await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
-                                await db.update_user_money(user_id=int(parent_id))
-                                await db.update_user_is_try(is_try='yes', user_id=user_id)
-                                await message.answer(text=start_text, reply_markup=start_admin)
+                    if int(ADMINS[0]) == int(user_id):
+                        if is_try == 'no':
+                            if parent_id:
+                                if int(parent_id) != int(user_id):
+                                    await db.update_user_count(user_id=int(parent_id))
+                                    await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
+                                    await db.update_user_money(user_id=int(parent_id))
+                                    await db.update_user_is_try(is_try='yes', user_id=user_id)
+                                    await message.answer(text=start_text, reply_markup=start_admin)
+                                else:
+                                    await message.answer(text=start_text, reply_markup=start_admin)
                             else:
                                 await message.answer(text=start_text, reply_markup=start_admin)
                         else:
                             await message.answer(text=start_text, reply_markup=start_admin)
-                    else:
-                        await message.answer(text=start_text, reply_markup=start_admin)
 
-                else:
-                    if is_try == 'no':
-                        if parent_id:
-                            if int(parent_id) != int(user_id):
-                                await db.update_user_count(user_id=int(parent_id))
-                                await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
-                                await db.update_user_money(user_id=int(parent_id))
-                                await db.update_user_is_try(is_try='yes', user_id=user_id)
-                                await message.answer(text=start_text, reply_markup=start)
+                    else:
+                        if is_try == 'no':
+                            if parent_id:
+                                if int(parent_id) != int(user_id):
+                                    await db.update_user_count(user_id=int(parent_id))
+                                    await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
+                                    await db.update_user_money(user_id=int(parent_id))
+                                    await db.update_user_is_try(is_try='yes', user_id=user_id)
+                                    await message.answer(text=start_text, reply_markup=start)
+                                else:
+                                    await message.answer(text=start_text, reply_markup=start)
                             else:
                                 await message.answer(text=start_text, reply_markup=start)
                         else:
                             await message.answer(text=start_text, reply_markup=start)
-                    else:
-                        await message.answer(text=start_text, reply_markup=start)
 
 
 

@@ -1,9 +1,7 @@
 import logging
 
-from aiogram.dispatcher import FSMContext
 
 from loader import dp, db, bot
-from states.admin import Panel
 from utils.misc.subs import check
 from aiogram.dispatcher.handler import CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
@@ -14,10 +12,8 @@ from aiogram import types
 class BigBrother(BaseMiddleware):
     async def on_pre_process_update(self, update: types.Update, data: dict):
         if update.message:
-            if update.message.text != '/start':
-                return
             user = update.message.from_user.id
-            if update.message.text in ['/help']:
+            if update.message.text in ['/start', '/help']:
                 return
         elif update.callback_query:
             user = update.callback_query.from_user.id

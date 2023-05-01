@@ -7,10 +7,13 @@ from states.admin import Panel
 from utils.misc.subs import check
 from data.config import ADMINS
 from keyboards.default.start import start, start_admin
+
+
 @dp.callback_query_handler(text="check_subs", state='*')
 async def check_func(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
     parent_id = data.get('parent_id')
+    print(parent_id)
 
 
     user_id = call.from_user.id
@@ -45,9 +48,9 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
                 if is_try == 'no':
                     if parent_id:
                             if int(parent_id) != int(user_id):
-                                await db.update_user_count(user_id=int(parent_id))
+                                # await db.update_user_count(user_id=int(parent_id))
+                                # await db.update_user_money(user_id=int(parent_id))
                                 await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
-                                await db.update_user_money(user_id=int(parent_id))
                                 await db.update_user_is_try(is_try='yes', user_id=user_id)
                                 await call.message.answer(text=text, reply_markup=start_admin)
                             else:
@@ -68,9 +71,7 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
                 if is_try == 'no':
                     if parent_id:
                         if int(parent_id) != int(user_id):
-                            await db.update_user_count(user_id=int(parent_id))
                             await bot.send_message(chat_id=parent_id, text="Sizning hisobingizga $5 qo'shildi✅")
-                            await db.update_user_money(user_id=int(parent_id))
                             await db.update_user_is_try(is_try='yes', user_id=user_id)
                             await call.message.answer(text=text, reply_markup=start)
 
