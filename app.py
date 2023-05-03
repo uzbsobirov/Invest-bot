@@ -1,10 +1,10 @@
 from aiogram import executor
 
-from loader import dp, db, scheduler
+from loader import dp, db, bot
 import middlewares, filters, handlers
 from utils.notify_admins import on_startup_notify
 from utils.set_bot_commands import set_default_commands
-# from handlers.users.everyday_pay import schedule_jobs
+from handlers.users.admin_panel.pay_to_user import scheduler
 
 
 
@@ -19,6 +19,9 @@ async def on_startup(dispatcher):
 
     # Bot ishga tushgani haqida adminga xabar berish
     await on_startup_notify(dispatcher)
+
+
+
 
 
 if __name__ == "__main__":

@@ -56,3 +56,14 @@ def detect_markups(markups):
             )
         )
     return markup
+
+
+def detect_crypto_money(crypto):
+    if crypto == 'premiumbtc':
+        return 5000000
+
+    elif crypto == 'standarteth':
+        return 500000
+
+    else:
+        return 300000

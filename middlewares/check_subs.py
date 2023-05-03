@@ -11,11 +11,11 @@ from aiogram import types
 
 class BigBrother(BaseMiddleware):
     async def on_pre_process_update(self, update: types.Update, data: dict):
-        if update.message:
-            user = update.message.from_user.id
-            if update.message.text in ['/start', '/help']:
-                return
-        elif update.callback_query:
+        # if update.message:
+        #     user = update.message.from_user.id
+        #     if update.message.text in ['/start', '/help']:
+        #         return
+        if update.callback_query:
             user = update.callback_query.from_user.id
             if update.callback_query.data in ['check_subs']:
                 return

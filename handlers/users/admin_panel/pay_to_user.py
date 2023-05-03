@@ -1,7 +1,12 @@
+import asyncio
 import logging
 import schedule
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from handlers.users import everyday_pay
 
-from handlers.users.detectors import detect_crypto, detect_percent
+from data.config import ADMINS
+from handlers.users.detectors import detect_crypto, detect_percent, detect_crypto_money
+from handlers.users.everyday_pay import pay_time_schedule
 from loader import dp, bot, db
 from states.paying import Pay
 from states.buycrypto import EveryDay
@@ -9,6 +14,8 @@ from keyboards.inline.admin import cryptos
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
+
+scheduler = AsyncIOScheduler
 
 @dp.callback_query_handler(text="pay_to_user", state='*')
 async def payload_user(call: types.CallbackQuery, state: FSMContext):
@@ -74,9 +81,34 @@ async def get_money(message: types.Message, state: FSMContext):
                                                 crypto=customer_crypto, date=30, user_id=customer_id)
 
 
+    scheduler.add_job(everyday_pay.pay_time_schedule, 'interval', minutes=1, args={'user_id': int(customer_id)})
+    await state.finish()
+
+    # await pay_time_schedule()
+
+    # get_datas = await db.select_one_user(user_id=customer_id)
+    #
+    # current_money = get_datas[0][5]
+    # crypto = get_datas[0][4]
+    # date = get_datas[0][12]
+    #
+    # for _ in range(1, 31):
+    #     if date > 0:
+    #         if current_money > detect_crypto_money(crypto=crypto):
+    #             percent = (current_money * detect_percent(crypto=crypto)) / 100
+    #
+    #             changed_money = current_money + percent
+    #
+    #             await db.update_user_new_money(money=changed_money, user_id=customer_id)
+    #
+    #             await db.update_user_date(user_id=customer_id)
+    #             await asyncio.sleep(3)
+
+
     # except Exception as error:
     #     logging.info(error)
     #     await message.answer(text="Iltimos faqat raqamlardan foydalaning\n\nNamuna: <code>1393587687</code>")
     #     await Pay.id.set()
 
+# @dp.message_handler()
 
