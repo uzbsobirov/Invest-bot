@@ -16,7 +16,7 @@ async def pay_time_schedule(user_id: int):
 
 
     # for _ in range(1, 31):
-    get_datas = await db.select_one_user(user_id=user_id)
+    get_datas = await db.select_one_user(user_id=int(user_id))
 
     current_money = get_datas[0][5]
     crypto = get_datas[0][4]

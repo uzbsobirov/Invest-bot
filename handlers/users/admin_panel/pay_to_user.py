@@ -15,7 +15,7 @@ from keyboards.inline.admin import cryptos
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-scheduler = AsyncIOScheduler
+scheduler = AsyncIOScheduler()
 
 @dp.callback_query_handler(text="pay_to_user", state='*')
 async def payload_user(call: types.CallbackQuery, state: FSMContext):
@@ -81,7 +81,7 @@ async def get_money(message: types.Message, state: FSMContext):
                                                 crypto=customer_crypto, date=30, user_id=customer_id)
 
 
-    scheduler.add_job(everyday_pay.pay_time_schedule, 'interval', minutes=1, args={'user_id': int(customer_id)})
+    scheduler.add_job(everyday_pay.pay_time_schedule, 'interval', minutes=1, kwargs={'user_id': int(customer_id)})
     await state.finish()
 
     # await pay_time_schedule()
