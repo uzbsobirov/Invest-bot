@@ -10,7 +10,7 @@ from data.config import ADMINS
 from aiogram import types
 
 
-async def pay_time_schedule(user_id):
+async def pay_time_schedule(user_id: int):
     # user_id = update['from']['id']
 
 
