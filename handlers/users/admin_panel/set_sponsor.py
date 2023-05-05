@@ -21,7 +21,7 @@ async def set_sponsor(call: types.CallbackQuery, state: FSMContext):
 
     count = 1
     text = "🗒 <b>Hozirgi ulangan kanallar ro'yhati\n\n</b>"
-    try:
+    if len(select_channels) != 0 and len(select_channels) >= 1:
         for sponsor in select_channels:
             chat_id = sponsor[1]
             get_datas = await bot.get_chat(chat_id=chat_id)
@@ -31,10 +31,10 @@ async def set_sponsor(call: types.CallbackQuery, state: FSMContext):
         await call.message.answer(text=text, reply_markup=channels_menu, disable_web_page_preview=True)
         await state.update_data(
             {'text_channels': text}
-        )
+            )
 
-    except Exception as error:
-        logging.info(error)
+    else:
+        # logging.info(error)
         await call.message.edit_text(text="Sizda hali homiy kanallar yo'q❗️", reply_markup=channels_menuu)
 
     await Panel.sponsor.set()
@@ -45,9 +45,10 @@ async def add_sponsor(call: types.CallbackQuery, state: FSMContext):
                                       "\n\n❗️ Bot kanalda admin bo'lishi shart</b>")
     await Panel.get_id.set()
 
-@dp.message_handler(state=Panel.get_id)
+@dp.message_handler(state=Panel.get_id, content_types=types.ContentTypes.ANY)
 async def get_sponsor_channel_id(message: types.Message, state: FSMContext):
     chat_id = message.forward_from_chat.id
+    print(chat_id)
 
 
     get_me = await bot.get_me()
@@ -82,9 +83,16 @@ async def delete_channel(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
     text_channels = data.get('text_channels')
 
-    await call.message.edit_text(text=f"O'chirmoqchi bo'lgan kanal idsini kiriting👇\n{text_channels}",
-                                 disable_web_page_preview=True)
-    await Panel.chat_id.set()
+    select_channels = await db.select_all_sponsors()
+
+    if select_channels != ([], ()) or len(select_channels) == 0:
+        await call.message.edit_text(text=f"O'chirmoqchi bo'lgan kanal idsini kiriting👇\n{text_channels}",
+                                     disable_web_page_preview=True)
+        await Panel.chat_id.set()
+
+    else:
+        await call.message.edit_text(text="Sizda hali homiy kanallar yo'q❗️", reply_markup=channels_menuu)
+
 
 @dp.message_handler(state=Panel.chat_id)
 async def get_deleted_channel_id(message: types.Message, state: FSMContext):

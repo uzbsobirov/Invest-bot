@@ -81,7 +81,7 @@ async def get_money(message: types.Message, state: FSMContext):
                                                 crypto=customer_crypto, date=30, user_id=customer_id)
 
 
-    scheduler.add_job(everyday_pay.pay_time_schedule, 'interval', minutes=1, kwargs={'user_id': int(customer_id)})
+    scheduler.add_job(everyday_pay.pay_time_schedule, 'interval', minutes=1440, kwargs={'user_id': int(customer_id)})
     await state.finish()
 
     # await pay_time_schedule()
