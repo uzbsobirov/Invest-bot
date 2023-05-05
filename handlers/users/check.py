@@ -46,27 +46,26 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
         user_select = await db.select_one_user(user_id=user_id)
         is_try = user_select[0][11]
 
-        if parent_id:
-            if user_id != int(ADMINS[0]):
+        if user_id != int(ADMINS[0]):
+            if parent_id:
                 if is_try != 'yes':
                     await db.update_user_count(user_id=int(parent_id))
                     await db.update_user_money(user_id=int(parent_id))
                     await db.update_user_is_try(is_try='yes', user_id=user_id)
                     await bot.send_message(chat_id=parent_id, text=notif_user)
-                    await call.message.answer(text=main_text)
+                    await call.message.answer(text=main_text, reply_markup=start)
 
                 else:
-                    await call.message.answer(text=main_text)
+                    await call.message.answer(text=main_text, reply_markup=start_admin)
 
             else:
-                await call.message.answer(text=main_text)
+                await call.message.answer(text=main_text, reply_markup=start_admin)
 
         else:
-            await call.message.answer(text=main_text)
+            await call.message.answer(text=main_text, reply_markup=start_admin)
 
-        if parent_id:
-
-            if user_id != int(ADMINS[0]):
+        if user_id != int(ADMINS[0]):
+            if parent_id:
 
                 if is_try != 'yes':
 
@@ -78,22 +77,22 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
 
                     await bot.send_message(chat_id=parent_id, text=notif_user)
 
-                    await call.message.answer(text=main_text)
+                    await call.message.answer(text=main_text, reply_markup=start)
 
 
                 else:
 
-                    await call.message.answer(text=main_text)
+                    await call.message.answer(text=main_text, reply_markup=start_admin)
 
 
             else:
 
-                await call.message.answer(text=main_text)
+                await call.message.answer(text=main_text, reply_markup=start_admin)
 
 
         else:
 
-            await call.message.answer(text=main_text)
+            await call.message.answer(text=main_text, reply_markup=start_admin)
 
         await state.finish()
     else:
