@@ -48,8 +48,6 @@ async def add_sponsor(call: types.CallbackQuery, state: FSMContext):
 @dp.message_handler(state=Panel.get_id, content_types=types.ContentTypes.ANY)
 async def get_sponsor_channel_id(message: types.Message, state: FSMContext):
     chat_id = message.forward_from_chat.id
-    print(chat_id)
-
 
     get_me = await bot.get_me()
     bot_username = get_me.username

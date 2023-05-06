@@ -21,6 +21,7 @@ async def bot_start(message: types.Message, state: FSMContext):
     user_mention = message.from_user.get_mention(name=full_name, as_html=True)
     linking = await get_start_link(user_id)
     parent_id = message.get_args()
+    print('/start')
 
 
     main_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga " \
@@ -86,8 +87,9 @@ async def bot_start(message: types.Message, state: FSMContext):
                         if parent_id:
                             if is_try != 'yes':
                                     await db.update_user_count(user_id=int(parent_id))
-                                    await db.update_user_money(user_id=int(parent_id))
+                                    await db.update_user_money(money=50000, user_id=int(parent_id))
                                     await db.update_user_is_try(is_try='yes', user_id=user_id)
+                                    print('/start yes 2')
                                     await bot.send_message(chat_id=parent_id, text=notif_user)
                                     await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start)
 
@@ -108,8 +110,9 @@ async def bot_start(message: types.Message, state: FSMContext):
                 if parent_id:
                     if is_try != 'yes':
                         await db.update_user_count(user_id=int(parent_id))
-                        await db.update_user_money(user_id=int(parent_id))
+                        await db.update_user_money(money=50000)
                         await db.update_user_is_try(is_try='yes', user_id=user_id)
+                        print('/start yes 2')
                         await bot.send_message(chat_id=parent_id, text=notif_user)
                         await bot.send_message(chat_id=message.chat.id, text=main_text)
 

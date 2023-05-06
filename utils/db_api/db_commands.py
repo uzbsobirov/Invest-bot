@@ -114,9 +114,13 @@ class Database:
         sql = "UPDATE Users SET count=count+1 WHERE user_id=$1"
         return await self.execute(sql, user_id, execute=True)
 
-    async def update_user_money(self, user_id):
-        sql = "UPDATE Users SET money=money+50000 WHERE user_id=$1"
-        return await self.execute(sql, user_id, execute=True)
+    async def update_user_money(self, money, user_id):
+        sql = "SELECT money FROM Users WHERE user_id=$1"
+        result = await self.execute(sql, user_id, fetch=True)
+        if result:
+            money = result[0][0] + money
+        sql = "UPDATE Users SET money=$1 WHERE user_id=$2"
+        return await self.execute(sql, money, user_id, execute=True)
 
     async def update_user_new_money(self, money, user_id):
         sql = "UPDATE Users SET money=$1 WHERE user_id=$2"

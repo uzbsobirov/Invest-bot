@@ -14,6 +14,7 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
     data = await state.get_data()
     parent_id = data.get('parent_id')
     print(parent_id)
+    print('/check')
 
     main_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga " \
                 "investitsiya kiritib olishingiz mumkin</b>"
@@ -50,8 +51,9 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
             if parent_id:
                 if is_try != 'yes':
                     await db.update_user_count(user_id=int(parent_id))
-                    await db.update_user_money(user_id=int(parent_id))
+                    await db.update_user_money(money=50000, user_id=int(parent_id))
                     await db.update_user_is_try(is_try='yes', user_id=user_id)
+                    print('/check yes 2')
                     await bot.send_message(chat_id=parent_id, text=notif_user)
                     await call.message.answer(text=main_text, reply_markup=start)
 
@@ -70,11 +72,9 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
                 if is_try != 'yes':
 
                     await db.update_user_count(user_id=int(parent_id))
-
-                    await db.update_user_money(user_id=int(parent_id))
-
+                    await db.update_user_money(money=50000, user_id=int(parent_id))
                     await db.update_user_is_try(is_try='yes', user_id=user_id)
-
+                    print('/check yes 2')
                     await bot.send_message(chat_id=parent_id, text=notif_user)
 
                     await call.message.answer(text=main_text, reply_markup=start)
