@@ -62,6 +62,18 @@ class Database:
         """
         await self.execute(sql, execute=True)
 
+    async def create_table_user_lang(self):
+        sql = """
+        CREATE TABLE IF NOT EXISTS lang_users (
+        id SERIAL PRIMARY KEY,
+        full_name VARCHAR(255) NOT NULL,
+        username varchar(255) NULL,
+        user_id BIGINT NOT NULL UNIQUE,
+        lang VARCHAR(5)
+        );
+        """
+        await self.execute(sql, execute=True)
+
     async def create_table_sponsor(self):
         sql = """
         CREATE TABLE IF NOT EXISTS Sponsor (
@@ -82,6 +94,10 @@ class Database:
     async def add_user(self, full_name: str, username: str, user_id: int, money: int, linking: str, parent_id: int, count: int, is_try: str):
         sql = "INSERT INTO users (full_name, username, user_id, money, linking, parent_id, count, is_try) VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *"
         return await self.execute(sql, full_name, username, user_id, money, linking, parent_id, count, is_try, fetchrow=True)
+
+    async def add_user_lang(self, full_name: str, username: str, user_id: int, lang: str):
+        sql = "INSERT INTO lang_users (full_name, username, user_id, lang) VALUES($1, $2, $3, $4) returning *"
+        return await self.execute(sql, full_name, username, user_id, lang, fetchrow=True)
 
     async def add_sponsor(self, chat_id: int):
         sql = "INSERT INTO Sponsor (chat_id) VALUES($1) returning *"
@@ -121,6 +137,10 @@ class Database:
             money = result[0][0] + money
         sql = "UPDATE Users SET money=$1 WHERE user_id=$2"
         return await self.execute(sql, money, user_id, execute=True)
+
+    async def get_lang(self, user_id):
+        sql = "SELECT lang FROM lang_users WHERE user_id=$1"
+        result = await self.execute(sql, user_id, fetch=True)
 
     async def update_user_new_money(self, money, user_id):
         sql = "UPDATE Users SET money=$1 WHERE user_id=$2"

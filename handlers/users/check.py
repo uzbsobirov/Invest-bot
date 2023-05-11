@@ -8,6 +8,9 @@ from utils.misc.subs import check
 from data.config import ADMINS
 from keyboards.default.start import start, start_admin
 
+from language import i18n
+
+_ = i18n.lazy_gettext()
 
 @dp.callback_query_handler(text="check_subs", state='*')
 async def check_func(call: types.CallbackQuery, state: FSMContext):
@@ -16,10 +19,10 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
     print(parent_id)
     print('/check')
 
-    main_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga " \
-                "investitsiya kiritib olishingiz mumkin</b>"
+    main_text = _("<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga "
+                  "investitsiya kiritib olishingiz mumkin</b>")
 
-    notif_user = "<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>"
+    notif_user = _("<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>")
 
     user_id = call.from_user.id
     full_name = call.from_user.id
@@ -39,7 +42,7 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
         if status is not True:
             final_status *= False
             result.insert(InlineKeyboardButton(text=f"❌ {channel.title}", url=invite_link))
-    result.add(InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data='check_subs'))
+    result.add(InlineKeyboardButton(text=_("✅ Obunani tekshirish"), callback_data='check_subs'))
 
     if final_status:
         await call.message.delete()
@@ -52,8 +55,9 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
                 if is_try != 'yes':
                     await db.update_user_count(user_id=int(parent_id))
                     await db.update_user_money(money=50000, user_id=int(parent_id))
-                    await db.update_user_is_try(is_try='yes', user_id=user_id)
                     print('/check yes 2')
+                    await db.update_user_is_try(is_try='yes', user_id=user_id)
+
                     await bot.send_message(chat_id=parent_id, text=notif_user)
                     await call.message.answer(text=main_text, reply_markup=start)
 
@@ -73,8 +77,9 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
 
                     await db.update_user_count(user_id=int(parent_id))
                     await db.update_user_money(money=50000, user_id=int(parent_id))
-                    await db.update_user_is_try(is_try='yes', user_id=user_id)
                     print('/check yes 2')
+                    await db.update_user_is_try(is_try='yes', user_id=user_id)
+
                     await bot.send_message(chat_id=parent_id, text=notif_user)
 
                     await call.message.answer(text=main_text, reply_markup=start)
@@ -97,8 +102,8 @@ async def check_func(call: types.CallbackQuery, state: FSMContext):
         await state.finish()
     else:
         await call.message.delete()
-        await call.message.answer(text="<b>❌Siz ba'zi kanallardan chiqib ketgansiz, agar kanallarga "
-                                       "ulanmasangiz botni ishlata olmaysiz</b>", reply_markup=result,
+        await call.message.answer(text=_("<b>❌Siz ba'zi kanallardan chiqib ketgansiz, agar kanallarga "
+                                       "ulanmasangiz botni ishlata olmaysiz</b>"), reply_markup=result,
                                   disable_web_page_preview=True)
 
 

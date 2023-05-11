@@ -4,7 +4,7 @@ from typing import Tuple, Any
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.middlewares.i18n import I18nMiddleware
 
-TOKEN = "5762026535:AAEHgZLyM1iMXR8CFUPFItGFnMZn0YMzDhg"
+TOKEN = "5762026535:AAEKqlMyIBGHjxTIaZVEUFrhG1zuGmQSf-g"
 I18N_DOMAIN = "mybot"
 
 BASE_DIR = Path(__file__).parent
@@ -21,18 +21,18 @@ LANGS = ["ru", "en", "uz"]
 class Localization(I18nMiddleware):
     async def get_user_locale(self, action: str, args: Tuple[Any]) -> str:
         """
-        User locale getter
+        User locales getter
         You can override the method if you want to use different way of getting user language.
         :param action: event name
         :param args: event arguments
-        :return: locale name
+        :return: locales name
         """
         user: types.User = types.User.get_current()
 
         if LANG_STORAGE.get(user.id) is None:
             LANG_STORAGE[user.id] = "en"
         *_, data = args
-        language = data['locale'] = LANG_STORAGE[user.id]
+        language = data['locales'] = LANG_STORAGE[user.id]
         print(language)
         return language
 
@@ -77,7 +77,7 @@ async def cmd_setlang(message: types.Message):
     if not lang:
         return await message.answer(_("Specify your language.\nExample: /setlang en"))
     if lang not in LANGS:
-        return await message.answer(_("This language is not available. Use en or ru"))
+        return await message.answer(_("This language is not available. Use uz or ru"))
 
     LANG_STORAGE[message.from_user.id] = lang
     print(LANG_STORAGE)

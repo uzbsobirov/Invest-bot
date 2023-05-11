@@ -12,7 +12,7 @@ async def on_startup(dispatcher):
     await db.create()
     await db.create_table_users()
     await db.create_table_sponsor()
-    # await schedule_jobs()
+    await db.create_table_user_lang()
 
     # Birlamchi komandalar (/start va /help)
     await set_default_commands(dispatcher)

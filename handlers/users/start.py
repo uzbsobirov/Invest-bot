@@ -12,6 +12,10 @@ from loader import dp, db, bot
 from states.admin import Panel
 from utils.misc.subs import check
 
+from language import i18n
+
+_ = i18n.lazy_gettext()
+
 
 @dp.message_handler(CommandStart(), state='*')
 async def bot_start(message: types.Message, state: FSMContext):
@@ -24,10 +28,10 @@ async def bot_start(message: types.Message, state: FSMContext):
     print('/start')
 
 
-    main_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga " \
-                "investitsiya kiritib olishingiz mumkin</b>"
+    main_text = _("<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga " \
+                "investitsiya kiritib olishingiz mumkin</b>")
 
-    notif_user = "<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>"
+    notif_user = _("<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>")
 
     await state.update_data(
         {'parent_id': parent_id}
@@ -76,9 +80,9 @@ async def bot_start(message: types.Message, state: FSMContext):
                         chat = await bot.get_chat(channel[1])
                         invite_link = await chat.export_invite_link()
                         markup.insert(InlineKeyboardButton(text=chat.title, url=invite_link))
-                    markup.add(InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data='check_subs'))
-                    text = f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy kanallarimizga a'zo " \
-                           f"bo'ling"
+                    markup.add(InlineKeyboardButton(text=_("✅ Obunani tekshirish"), callback_data='check_subs'))
+                    text = _(f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy "
+                             f"kanallarimizga a'zo bo'ling")
                     await message.answer(text=text, reply_markup=markup, disable_web_page_preview=True)
 
 
@@ -88,8 +92,9 @@ async def bot_start(message: types.Message, state: FSMContext):
                             if is_try != 'yes':
                                     await db.update_user_count(user_id=int(parent_id))
                                     await db.update_user_money(money=50000, user_id=int(parent_id))
-                                    await db.update_user_is_try(is_try='yes', user_id=user_id)
                                     print('/start yes 2')
+                                    await db.update_user_is_try(is_try='yes', user_id=user_id)
+
                                     await bot.send_message(chat_id=parent_id, text=notif_user)
                                     await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start)
 
@@ -111,8 +116,9 @@ async def bot_start(message: types.Message, state: FSMContext):
                     if is_try != 'yes':
                         await db.update_user_count(user_id=int(parent_id))
                         await db.update_user_money(money=50000)
-                        await db.update_user_is_try(is_try='yes', user_id=user_id)
                         print('/start yes 2')
+                        await db.update_user_is_try(is_try='yes', user_id=user_id)
+
                         await bot.send_message(chat_id=parent_id, text=notif_user)
                         await bot.send_message(chat_id=message.chat.id, text=main_text)
 
@@ -120,7 +126,11 @@ async def bot_start(message: types.Message, state: FSMContext):
                         await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
 
                 else:
-                    await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
+                    if user_id == int(ADMINS[0]):
+                        await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
+
+                    else:
+                        await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start)
 
             else:
                 await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
