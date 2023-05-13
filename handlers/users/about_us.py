@@ -5,46 +5,44 @@ from loader import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
-from language import i18n
-
-_ = i18n.lazy_gettext()
 
 
-@dp.message_handler(text=_("📰 Bot haqida"), state='*')
+
+@dp.message_handler(text="📰 Bot haqida", state='*')
 async def about_us_func(message: types.Message, state: FSMContext):
 
     media1 = MediaGroup()
     media2 = MediaGroup()
     media3 = MediaGroup()
 
-    text1 = _("<b>METAGO BOT NIMA ❓ - NEGA BIZGA PUL TO'LAYDI</b> 💰❓\n\n"
-              "- MetaGo 2017 yil AQSH da tashkil etildi va o'zining MAG Kriptovalyutasiga ega ✅\n"
-              "- Joriy Yilda MetaGo arbitraj loyihasi keng ommaga taqdim etildi ✅\n"
-              "- MetaGo Kriptovalyuta oldi sottisi bilan shug'ullanadi va foydani "
-              "darajalarga asoslab ikkiga bo'ladi :\n\n 🟢 PREMIUM / yani bunda "
-              "kunlik foyda siz kiritgan summaning 3.4% ni tashkil qiladi.500$ bilan boshlanadi.\n\n"
-              "🔵 STANDARD  /  yani bunda kunlik foyda siz kiritgan summaning 2.3% ni tashkil qiladi. "
-              "50$ bilan boshlanadi.\n\n🟡 MINIMUM   /  yani bunda kunlik foyda siz "
-              "kiritgan summaning 1.8% ni tashkil qiladi. 30 $ bilan boshlanadi.\n\n"
-              "💰Eng kam yechib olish 10 $\n💰Eng ko'p yechib olish 10000 $ - bir martalik zayavkada\n🏛"
-              "️Hisobingizga 72 soat davomida tushadi✅")
+    text1 = "<b>METAGO BOT NIMA ❓ - NEGA BIZGA PUL TO'LAYDI</b> 💰❓\n\n" \
+              "- MetaGo 2017 yil AQSH da tashkil etildi va o'zining MAG Kriptovalyutasiga ega ✅\n" \
+              "- Joriy Yilda MetaGo arbitraj loyihasi keng ommaga taqdim etildi ✅\n" \
+              "- MetaGo Kriptovalyuta oldi sottisi bilan shug'ullanadi va foydani " \
+              "darajalarga asoslab ikkiga bo'ladi :\n\n 🟢 PREMIUM / yani bunda " \
+              "kunlik foyda siz kiritgan summaning 3.4% ni tashkil qiladi.500$ bilan boshlanadi.\n\n" \
+              "🔵 STANDARD  /  yani bunda kunlik foyda siz kiritgan summaning 2.3% ni tashkil qiladi. " \
+              "50$ bilan boshlanadi.\n\n🟡 MINIMUM   /  yani bunda kunlik foyda siz " \
+              "kiritgan summaning 1.8% ni tashkil qiladi. 30 $ bilan boshlanadi.\n\n" \
+              "💰Eng kam yechib olish 10 $\n💰Eng ko'p yechib olish 10000 $ - bir martalik zayavkada\n🏛" \
+              "️Hisobingizga 72 soat davomida tushadi✅"
 
-    text2 = _("METAGO – dunyodagi yetakchi aqlli moliyaviy boshqaruv platformasi hisoblanib, "
-              "kompaniya shtab-kvartirasi Koloradoda, Gʻarbiy AQShda joylashgan. METAGO AQSH "
-              "Moliya byurosi tomonidan tartibga solinadi, siz bizning kompaniyamizning barcha "
-              "malakalari, sertifikatlari, biznesi, litsenziyalari va hokazolarni "
-              "tekshirishingiz mumkin. Google play doʻkonida ham yuklab olish mumkin. "
-              "METAGO bosh ofisi 2017 yilda tashkil etilgan. METAGO dunyodagi eng professional "
-              "miqdoriy platforma boʻlib, yaxshi miqdoriy platforma boʻlish uchun barcha masʼuliyatni "
-              "oʻz zimmasiga oladi✅️")
+    text2 = "METAGO – dunyodagi yetakchi aqlli moliyaviy boshqaruv platformasi hisoblanib, " \
+              "kompaniya shtab-kvartirasi Koloradoda, Gʻarbiy AQShda joylashgan. METAGO AQSH " \
+              "Moliya byurosi tomonidan tartibga solinadi, siz bizning kompaniyamizning barcha " \
+              "malakalari, sertifikatlari, biznesi, litsenziyalari va hokazolarni " \
+              "tekshirishingiz mumkin. Google play doʻkonida ham yuklab olish mumkin. " \
+              "METAGO bosh ofisi 2017 yilda tashkil etilgan. METAGO dunyodagi eng professional " \
+              "miqdoriy platforma boʻlib, yaxshi miqdoriy platforma boʻlish uchun barcha masʼuliyatni " \
+              "oʻz zimmasiga oladi✅️"
 
-    text3 = _("🇺🇿 MetaGo Bot - O'zbekiston davlatida ham o'z filiallariga ega bo'lib , "
-              "hozirda ko'plab foydalanuvchilardan tashkil topgan jamoalariga ega va yuqori "
-              "darajada daromad olishayotganligi sababli hayriya tadbirlarini ham o'tkazib  "
-              "kelmoqda.\n\n🤑MetaGo Bot - nafaqat dunyo aholisini hattoki musulmon davlatlar "
-              "xalqi tomonidan ham o'zining ishonchli, tezkor daromad manbai sababli iliqlik bilan "
-              "kutib olindi va hozirda ko'plab davlatlar MetaGo Bot orqali o'z orzulariga erishib, "
-              "farovon hayot kechirmoqda✅️")
+    text3 = "🇺🇿 MetaGo Bot - O'zbekiston davlatida ham o'z filiallariga ega bo'lib , " \
+              "hozirda ko'plab foydalanuvchilardan tashkil topgan jamoalariga ega va yuqori " \
+              "darajada daromad olishayotganligi sababli hayriya tadbirlarini ham o'tkazib  " \
+              "kelmoqda.\n\n🤑MetaGo Bot - nafaqat dunyo aholisini hattoki musulmon davlatlar " \
+              "xalqi tomonidan ham o'zining ishonchli, tezkor daromad manbai sababli iliqlik bilan " \
+              "kutib olindi va hozirda ko'plab davlatlar MetaGo Bot orqali o'z orzulariga erishib, " \
+              "farovon hayot kechirmoqda✅️"
 
     # First media
     media1.attach_video(video="https://t.me/metago_medias/15", caption=text1)

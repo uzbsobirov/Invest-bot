@@ -8,13 +8,12 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from data.config import ADMINS
 from keyboards.default.start import start, start_admin
+from keyboards.inline.lang import langs
 from loader import dp, db, bot
 from states.admin import Panel
 from utils.misc.subs import check
 
-from language import i18n
 
-_ = i18n.lazy_gettext()
 
 
 @dp.message_handler(CommandStart(), state='*')
@@ -25,13 +24,12 @@ async def bot_start(message: types.Message, state: FSMContext):
     user_mention = message.from_user.get_mention(name=full_name, as_html=True)
     linking = await get_start_link(user_id)
     parent_id = message.get_args()
-    print('/start')
 
 
-    main_text = _("<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga " \
-                "investitsiya kiritib olishingiz mumkin</b>")
+    main_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga " \
+                "investitsiya kiritib olishingiz mumkin</b>"
 
-    notif_user = _("<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>")
+    notif_user = "<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>"
 
     await state.update_data(
         {'parent_id': parent_id}
@@ -66,10 +64,29 @@ async def bot_start(message: types.Message, state: FSMContext):
         logging.info(error)
 
     try:
+        await db.add_user_lang(
+            full_name=full_name,
+            username=username,
+            user_id=user_id,
+            lang='null'
+        )
+    except:
+        pass
+
+    select_lang = await db.select_user_lang(user_id=user_id)
+    all_lang = await db.select_all_lang()
+    print(all_lang)
+    print(select_lang)
+    # user_lang = select_lang[0][3]
+
+    # if user_lang != 'null':
+
+    try:
         selection = await db.select_all_sponsors()
 
         user_select = await db.select_one_user(user_id=user_id)
         is_try = user_select[0][11]
+
 
         if selection:
             for row in selection:
@@ -80,9 +97,9 @@ async def bot_start(message: types.Message, state: FSMContext):
                         chat = await bot.get_chat(channel[1])
                         invite_link = await chat.export_invite_link()
                         markup.insert(InlineKeyboardButton(text=chat.title, url=invite_link))
-                    markup.add(InlineKeyboardButton(text=_("✅ Obunani tekshirish"), callback_data='check_subs'))
-                    text = _(f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy "
-                             f"kanallarimizga a'zo bo'ling")
+                    markup.add(InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data='check_subs'))
+                    text = f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy " \
+                           f"kanallarimizga a'zo bo'ling"
                     await message.answer(text=text, reply_markup=markup, disable_web_page_preview=True)
 
 
@@ -137,5 +154,8 @@ async def bot_start(message: types.Message, state: FSMContext):
 
     except Exception as err:
         logging.info(err)
+    # else:
+    #     text = "🇺🇿 Tilni tanlang:\n🇷🇺 Выберите язык:"
+    #     await message.answer(text=text, reply_markup=langs)
 
 

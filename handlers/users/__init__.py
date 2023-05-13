@@ -1,4 +1,4 @@
 from . import (
     backs, help, start, admin_panel, viprate, buy_crypto, balance, detectors, deep_link, applying, about_us, admin,
-    everyday_pay, check
+    everyday_pay, check, lang_data
 )

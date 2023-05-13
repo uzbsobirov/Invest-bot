@@ -112,15 +112,21 @@ class Database:
         sql = "SELECT * FROM Sponsor"
         return await self.execute(sql, fetch=True)
 
+    async def select_all_lang(self):
+        sql = "SELECT * FROM lang_users"
+        return await self.execute(sql, fetch=True)
+
     async def select_one_user(self, user_id):
         sql = "SELECT * FROM Users WHERE user_id=$1"
         return await self.execute(sql, user_id, fetch=True)
 
+    async def select_user(self, user_id):
+        sql = "SELECT * FROM Users WHERE user_id=$1"
+        await self.execute(sql, user_id, fetch=True)
 
-    async def select_user(self, **kwargs):
-        sql = "SELECT * FROM Users WHERE "
-        sql, parameters = self.format_args(sql, parameters=kwargs)
-        return await self.execute(sql, *parameters, fetchrow=True)
+    async def select_user_lang(self, user_id):
+        sql = "SELECT * FROM lang_users WHERE user_id=$1"
+        await self.execute(sql, user_id, fetch=True)
 
     async def count_users(self):
         sql = "SELECT COUNT(*) FROM Users"

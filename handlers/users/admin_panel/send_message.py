@@ -4,7 +4,7 @@ import logging
 import asyncpg
 
 from data.config import ADMINS
-from keyboards.default.start import start
+from keyboards.default.start import start, start_admin
 from loader import dp, db, bot
 from states.admin import Panel
 
@@ -51,7 +51,7 @@ async def send_post_all_groups(message: types.Message, state: FSMContext):
     finally:
         response = f"✅ Reklama {sended} / {len(users)} ta foydalanuvchiga yuborildi\n\n" \
                            f"❌ Reklama {unsended} / {len(users)} ta foydalanuvchiga yuborilmadi"
-        await message.answer(text=response, reply_markup=start)
+        await message.answer(text=response, reply_markup=start_admin)
         await state.finish()
 
 
