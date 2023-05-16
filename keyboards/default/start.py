@@ -1,28 +1,30 @@
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
+from language import i18n
 
+_ = i18n.gettext()
 
 start = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(
-                text="✳️ Vip tariflar"
-            ),
-            KeyboardButton(
-                text="💰 Balans"
+                text=_("✳️ Vip tariflar")
             )
         ],
         [
             KeyboardButton(
-                text="🆘 Murojaat uchun admin_panel"
+                text=_("☎️ Murojaat uchun")
+            ),
+            KeyboardButton(
+                text=_("💰 Balans")
             )
         ],
         [
             KeyboardButton(
-                text="🔗 Referal"
+                text=_("🔗 Referal")
             ),
             KeyboardButton(
-                text="📰 Bot haqida"
+                text=_("📰 Bot haqida")
             )
         ]
     ], resize_keyboard=True, one_time_keyboard=True
@@ -32,28 +34,28 @@ start_admin = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(
-                text="✳️ Vip tariflar"
+                text=_("✳️ Vip tariflar")
+            )
+        ],
+        [
+            KeyboardButton(
+                text=_("☎️ Murojaat uchun")
             ),
             KeyboardButton(
-                text="💰 Balans"
+                text=_("💰 Balans")
             )
         ],
         [
             KeyboardButton(
-                text="🆘 Murojaat uchun admin_panel"
-            )
-        ],
-        [
-            KeyboardButton(
-                text="🔗 Referal"
+                text=_("🔗 Referal")
             ),
             KeyboardButton(
-                text="📰 Bot haqida"
+                text=_("📰 Bot haqida")
             )
         ],
         [
             KeyboardButton(
-                text="💻 Admin panel"
+                text=_("💻 Admin panel")
             )
         ]
     ], resize_keyboard=True, one_time_keyboard=True

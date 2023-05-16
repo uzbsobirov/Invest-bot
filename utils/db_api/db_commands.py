@@ -126,7 +126,7 @@ class Database:
 
     async def select_user_lang(self, user_id):
         sql = "SELECT * FROM lang_users WHERE user_id=$1"
-        await self.execute(sql, user_id, fetch=True)
+        return await self.execute(sql, user_id, fetch=True)
 
     async def count_users(self):
         sql = "SELECT COUNT(*) FROM Users"
@@ -151,6 +151,11 @@ class Database:
     async def update_user_new_money(self, money, user_id):
         sql = "UPDATE Users SET money=$1 WHERE user_id=$2"
         return await self.execute(sql, money, user_id, execute=True)
+
+
+    async def update_user_language(self, lang, user_id):
+        sql = "UPDATE lang_users SET lang=$1 WHERE user_id=$2"
+        return await self.execute(sql, lang, user_id, execute=True)
 
     async def update_user_date(self, user_id):
         sql = "UPDATE Users SET date=date-1 WHERE user_id=$1"

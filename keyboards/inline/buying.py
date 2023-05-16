@@ -1,17 +1,19 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+from language import i18n
 
+_ = i18n.gettext
 
 buying = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="📨 Bog'lanish", url='https://t.me/Rasul_Maxmudov'
+                text=_("📨 Bog'lanish"), url='https://t.me/Rasul_Maxmudov'
             )
         ],
         [
             InlineKeyboardButton(
-                text="◀️ Orqaga", callback_data='back_to_cards'
+                text=_("◀️ Orqaga"), callback_data='back_to_cards'
             )
         ]
     ]
@@ -36,12 +38,12 @@ payload = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="✅ To'lash", callback_data='accept_payload'
+                text=_("✅ To'lash"), callback_data='accept_payload'
             )
         ],
         [
             InlineKeyboardButton(
-                text="❌ Bekor qilish", callback_data='cancel_payload'
+                text=_("❌ Bekor qilish"), callback_data='cancel_payload'
             )
         ]
     ]

@@ -13,7 +13,9 @@ from loader import dp, db, bot
 from states.admin import Panel
 from utils.misc.subs import check
 
+from language import i18n
 
+_ = i18n.gettext
 
 
 @dp.message_handler(CommandStart(), state='*')
@@ -25,11 +27,10 @@ async def bot_start(message: types.Message, state: FSMContext):
     linking = await get_start_link(user_id)
     parent_id = message.get_args()
 
+    main_text = _("<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali "
+                  "kriptovalyutalarga investitsiya kiritib olishingiz mumkin</b>")
 
-    main_text = "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga " \
-                "investitsiya kiritib olishingiz mumkin</b>"
-
-    notif_user = "<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>"
+    notif_user = _("<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>")
 
     await state.update_data(
         {'parent_id': parent_id}
@@ -73,89 +74,11 @@ async def bot_start(message: types.Message, state: FSMContext):
     except:
         pass
 
-    select_lang = await db.select_user_lang(user_id=user_id)
-    all_lang = await db.select_all_lang()
-    print(all_lang)
-    print(select_lang)
-    # user_lang = select_lang[0][3]
+    user_select = await db.select_user_lang(user_id=user_id)
+    user_lang = user_select[0][4]
 
-    # if user_lang != 'null':
-
-    try:
-        selection = await db.select_all_sponsors()
-
-        user_select = await db.select_one_user(user_id=user_id)
-        is_try = user_select[0][11]
-
-
-        if selection:
-            for row in selection:
-                status = await check(user_id=user_id, channel=row[1])
-                if status == False:
-                    markup = InlineKeyboardMarkup(row_width=1)
-                    for channel in selection:
-                        chat = await bot.get_chat(channel[1])
-                        invite_link = await chat.export_invite_link()
-                        markup.insert(InlineKeyboardButton(text=chat.title, url=invite_link))
-                    markup.add(InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data='check_subs'))
-                    text = f"<b>Assalomu aleykum</b>, {full_name}! Botdan to'liq foydalanish uchun homiy " \
-                           f"kanallarimizga a'zo bo'ling"
-                    await message.answer(text=text, reply_markup=markup, disable_web_page_preview=True)
-
-
-                else:
-                    if user_id != int(ADMINS[0]):
-                        if parent_id:
-                            if is_try != 'yes':
-                                    await db.update_user_count(user_id=int(parent_id))
-                                    await db.update_user_money(money=50000, user_id=int(parent_id))
-                                    print('/start yes 2')
-                                    await db.update_user_is_try(is_try='yes', user_id=user_id)
-
-                                    await bot.send_message(chat_id=parent_id, text=notif_user)
-                                    await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start)
-
-                            else:
-                                await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
-
-                        else:
-                            await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
-
-                    else:
-                        await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
-
-
-
-
-        else:
-            if user_id != int(ADMINS[0]):
-                if parent_id:
-                    if is_try != 'yes':
-                        await db.update_user_count(user_id=int(parent_id))
-                        await db.update_user_money(money=50000)
-                        print('/start yes 2')
-                        await db.update_user_is_try(is_try='yes', user_id=user_id)
-
-                        await bot.send_message(chat_id=parent_id, text=notif_user)
-                        await bot.send_message(chat_id=message.chat.id, text=main_text)
-
-                    else:
-                        await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
-
-                else:
-                    if user_id == int(ADMINS[0]):
-                        await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
-
-                    else:
-                        await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start)
-
-            else:
-                await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
-
-    except Exception as err:
-        logging.info(err)
-    # else:
-    #     text = "🇺🇿 Tilni tanlang:\n🇷🇺 Выберите язык:"
-    #     await message.answer(text=text, reply_markup=langs)
-
-
+    if user_lang != 'null':
+        print('Have')
+    else:
+        text = "🇺🇿 Tilni tanlang:\n🇷🇺 Выберите язык:"
+        await message.answer(text=text, reply_markup=langs)

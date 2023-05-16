@@ -1,11 +1,15 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+from language import i18n
+
+_ = i18n.gettext
+
 
 withdraw = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="📤 Pul chiqarish", callback_data='withdrawmoney'
+                text=_("📤 Pul chiqarish"), callback_data='withdrawmoney'
             )
         ]
     ]
