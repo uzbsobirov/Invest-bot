@@ -5,7 +5,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from handlers.users import everyday_pay
 
 from data.config import ADMINS
-from handlers.users.detectors import detect_crypto, detect_percent, detect_crypto_money
+from handlers.detectors import detect_crypto, detect_percent, detect_crypto_money
 from handlers.users.everyday_pay import pay_time_schedule
 from loader import dp, bot, db
 from states.paying import Pay

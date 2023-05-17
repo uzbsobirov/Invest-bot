@@ -1,5 +1,5 @@
 from loader import db
-from .detectors import detect_percent, detect_crypto_money
+from ..detectors import detect_percent, detect_crypto_money
 
 
 async def pay_time_schedule(user_id: int):

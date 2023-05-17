@@ -4,7 +4,7 @@ from keyboards.default.start import start
 from keyboards.inline.balance import withdraw, payment
 from loader import dp, db, bot
 from states.balance import Balance
-from .detectors import input_sum, crypto, percent
+from handlers.detectors import sum_input, crypto, percent
 
 from aiogram.dispatcher import FSMContext
 from aiogram import types
@@ -24,10 +24,7 @@ async def uer_balance(message: types.Message, state: FSMContext):
     percentt = select_user[0][7]
     current_balance = select_user[0][5]
 
-    text = _(f"💰 Kiritgan summa: {input_sum(item=input_money)}\n"
-             f"🔹 Kriptovalyuta: {crypto(item=cripto)}\n⏳ "
-             f"Kunlik foiz: {percent(item=percentt)}\n"
-             f"💸 Hozirgi balans: {current_balance} so'm")
+    text = _("💰 Kiritgan summa: {}\n🔹 Kriptovalyuta: {}\n⏳ Kunlik foiz: {}\n💸 Hozirgi balans: {} so'm".format(sum_input(item=input_money), crypto(item=cripto), percent(item=percentt), current_balance))
     await message.answer(text=text, reply_markup=withdraw)
     await Balance.withdraw.set()
 

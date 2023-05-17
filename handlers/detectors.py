@@ -1,7 +1,7 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-def input_sum(item):
+def sum_input(item):
     if item is None:
         name = "<code>Kiritilmagan</code>"
         return name

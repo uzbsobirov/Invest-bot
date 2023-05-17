@@ -2,7 +2,7 @@ from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
 from language import i18n
 
-_ = i18n.gettext
+_ = i18n.lazy_gettext
 
 start = ReplyKeyboardMarkup(
     keyboard=[

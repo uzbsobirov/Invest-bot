@@ -19,10 +19,7 @@ async def start_deep_link(message: types.Message, state: FSMContext):
     count = selection[0][10]
     deeplink = selection[0][8]
 
-    caption = _(f"Sizning referalingiz: {count} ta\n\n"
-                f"🎁Metago Botdan Sizga har bir taklif qilgan dòstingiz uchun 5$ "
-                f"gacha bonus beriladi va ular balansini har gal to'ldirganida sizga 1% "
-                f"oyda taqdim etiladi!✅️\n\nSizning link: <code>{deeplink}</code>")
+    caption = _("Sizning referalingiz: {} ta\n\n🎁Metago Botdan Sizga har bir taklif qilgan dòstingiz uchun 5$ gacha bonus beriladi va ular balansini har gal to'ldirganida sizga 1foiz oyda taqdim etiladi!✅️\n\nSizning link: <code>{}</code>".format(count, deeplink))
 
     with open(file='media/referal.jpg', mode='rb') as photo:
         await message.answer_photo(photo=photo, caption=caption,
