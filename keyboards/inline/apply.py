@@ -8,7 +8,7 @@ apply = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text=_("☎️ Metago Admin"), url='https://t.me/metagobot_admin'
+                text=_("☎️ Metago Admin"), url='https://t.me/metagobot_admini'
             )
         ]
     ]

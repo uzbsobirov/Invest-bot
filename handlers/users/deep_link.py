@@ -9,7 +9,7 @@ from language import i18n
 _ = i18n.gettext
 
 
-@dp.message_handler(text=_("🔗 Referal"), state='*')
+@dp.message_handler(text=[_("🔗 Referal"), "🔗 Реферал"], state='*')
 async def start_deep_link(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
     get_me = await bot.get_me()

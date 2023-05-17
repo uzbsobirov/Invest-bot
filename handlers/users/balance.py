@@ -14,7 +14,7 @@ from language import i18n
 _ = i18n.gettext
 
 
-@dp.message_handler(text=_("💰 Balans"), state='*')
+@dp.message_handler(text=[_("💰 Balans"), "💰 Баланс"], state='*')
 async def uer_balance(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
 

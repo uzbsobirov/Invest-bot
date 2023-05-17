@@ -12,9 +12,9 @@ from language import i18n
 _ = i18n.gettext
 
 
-@dp.message_handler(text=_("✳️ Vip tariflar"), state='*')
+@dp.message_handler(text=[_("✳️ Vip tariflar"), "✳️ VIP тарифы"], state='*')
 async def vip_rates(message: types.Message, state: FSMContext):
-    text = _("O'zingizga kerakli bo'lgan tarifni tanlang👇")
+    text = _("<b>O'zingizga kerakli bo'lgan tarifni tanlang👇</b>")
     await message.answer(text=text, reply_markup=rates)
     await Rate.rates.set()
 

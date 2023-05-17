@@ -9,17 +9,17 @@ rates = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text=_("Premium BTC"), callback_data='premiumbtc'
+                text=_("🟢 Premium BTC"), callback_data='premiumbtc'
             )
         ],
         [
             InlineKeyboardButton(
-                text=_("Standart ETH"), callback_data='standarteth'
+                text=_("🔵 Standart ETH"), callback_data='standarteth'
             )
         ],
         [
             InlineKeyboardButton(
-                text=_("Maximum LTC"), callback_data='maximumltc'
+                text=_("🟡 Maximum LTC"), callback_data='maximumltc'
             )
         ],
         [

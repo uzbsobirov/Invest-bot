@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-17 15:23+0500\n"
-"PO-Revision-Date: 2023-05-17 15:23+0500\n"
+"POT-Creation-Date: 2023-05-17 18:07+0500\n"
+"PO-Revision-Date: 2023-05-17 18:07+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uz\n"
 "Language-Team: uz <LL@li.org>\n"
@@ -67,7 +67,7 @@ msgstr ""
 #: handlers/users/about_us.py:13 keyboards/default/start.py:27
 #: keyboards/default/start.py:53
 msgid "📰 Bot haqida"
-msgstr ""
+msgstr "📰 Bot haqida"
 
 #: handlers/users/about_us.py:19
 msgid ""
@@ -91,7 +91,26 @@ msgid ""
 "💰Eng kam yechib olish 10 $\n"
 "💰Eng ko'p yechib olish 10000 $ - bir martalik zayavkada\n"
 "🏛️Hisobingizga 72 soat davomida tushadi✅"
-msgstr ""
+msgstr ""<b>METAGO BOT NIMA ❓ - NEGA BIZGA PUL TO'LAYDI</b> 💰❓\n"
+"\n"
+"- MetaGo 2017 yil AQSH da tashkil etildi va o'zining MAG "
+"Kriptovalyutasiga ega ✅\n"
+"- Joriy Yilda MetaGo arbitraj loyihasi keng ommaga taqdim etildi ✅\n"
+"- MetaGo Kriptovalyuta oldi sottisi bilan shug'ullanadi va foydani "
+"darajalarga asoslab ikkiga bo'ladi :\n"
+"\n"
+" 🟢 PREMIUM / yani bunda kunlik foyda siz kiritgan summaning 3.4% ni "
+"tashkil qiladi.500$ bilan boshlanadi.\n"
+"\n"
+"🔵 STANDARD  /  yani bunda kunlik foyda siz kiritgan summaning 2.3% ni "
+"tashkil qiladi. 50$ bilan boshlanadi.\n"
+"\n"
+"🟡 MINIMUM   /  yani bunda kunlik foyda siz kiritgan summaning 1.8% ni "
+"tashkil qiladi. 30 $ bilan boshlanadi.\n"
+"\n"
+"💰Eng kam yechib olish 10 $\n"
+"💰Eng ko'p yechib olish 10000 $ - bir martalik zayavkada\n"
+"🏛️Hisobingizga 72 soat davomida tushadi✅""
 
 #: handlers/users/about_us.py:31
 msgid ""
@@ -104,7 +123,15 @@ msgid ""
 "etilgan. METAGO dunyodagi eng professional miqdoriy platforma boʻlib, "
 "yaxshi miqdoriy platforma boʻlish uchun barcha masʼuliyatni oʻz zimmasiga"
 " oladi✅️"
-msgstr ""
+msgstr ""METAGO – dunyodagi yetakchi aqlli moliyaviy boshqaruv platformasi "
+"hisoblanib, kompaniya shtab-kvartirasi Koloradoda, Gʻarbiy AQShda "
+"joylashgan. METAGO AQSH Moliya byurosi tomonidan tartibga solinadi, siz "
+"bizning kompaniyamizning barcha malakalari, sertifikatlari, biznesi, "
+"litsenziyalari va hokazolarni tekshirishingiz mumkin. Google play "
+"doʻkonida ham yuklab olish mumkin. METAGO bosh ofisi 2017 yilda tashkil "
+"etilgan. METAGO dunyodagi eng professional miqdoriy platforma boʻlib, "
+"yaxshi miqdoriy platforma boʻlish uchun barcha masʼuliyatni oʻz zimmasiga"
+" oladi✅️""
 
 #: handlers/users/about_us.py:40
 msgid ""
@@ -117,50 +144,59 @@ msgid ""
 "tomonidan ham o'zining ishonchli, tezkor daromad manbai sababli iliqlik "
 "bilan kutib olindi va hozirda ko'plab davlatlar MetaGo Bot orqali o'z "
 "orzulariga erishib, farovon hayot kechirmoqda✅️"
-msgstr ""
+msgstr ""🇺🇿 MetaGo Bot - O'zbekiston davlatida ham o'z filiallariga ega bo'lib , "
+"hozirda ko'plab foydalanuvchilardan tashkil topgan jamoalariga ega va "
+"yuqori darajada daromad olishayotganligi sababli hayriya tadbirlarini ham"
+" o'tkazib  kelmoqda.\n"
+"\n"
+"🤑MetaGo Bot - nafaqat dunyo aholisini hattoki musulmon davlatlar xalqi "
+"tomonidan ham o'zining ishonchli, tezkor daromad manbai sababli iliqlik "
+"bilan kutib olindi va hozirda ko'plab davlatlar MetaGo Bot orqali o'z "
+"orzulariga erishib, farovon hayot kechirmoqda✅️""
 
 #: handlers/users/admin.py:23 keyboards/default/start.py:58
 msgid "💻 Admin panel"
-msgstr ""
+msgstr "💻 Admin panel"
 
 #: handlers/users/admin.py:25 handlers/users/backs.py:55
 #: handlers/users/backs.py:79 handlers/users/backs.py:85
 msgid "<b>Admin panelga xush kelibsiz</b>"
-msgstr ""
+msgstr "<b>Admin panelga xush kelibsiz</b>"
 
 #: handlers/users/applying.py:12 keyboards/default/start.py:16
 #: keyboards/default/start.py:42
 msgid "☎️ Murojaat uchun"
-msgstr ""
+msgstr "☎️ Murojaat uchun"
 
 #: handlers/users/applying.py:15
 msgid "<b>Murojaat uchun admin_panel👇</b>"
-msgstr ""
+msgstr "<b>Murojaat uchun admin_panel👇</b>"
 
 #: handlers/users/backs.py:22 handlers/users/lang_data.py:26
 #: handlers/users/lang_data.py:58 handlers/users/start.py:27
 msgid ""
 "<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga "
 "investitsiya kiritib olishingiz mumkin</b>"
-msgstr ""
+msgstr ""<b>Assalomu aleykum hurmatli mijoz! Siz bu bot orqali kriptovalyutalarga "
+"investitsiya kiritib olishingiz mumkin</b>""
 
 #: handlers/users/backs.py:30 handlers/users/backs.py:39
 #: handlers/users/viprate.py:17
 msgid "O'zingizga kerakli bo'lgan tarifni tanlang👇"
-msgstr ""
+msgstr "O'zingizga kerakli bo'lgan tarifni tanlang👇"
 
 #: handlers/users/backs.py:48 handlers/users/buy_crypto.py:19
 msgid "<b>📋Quyidagi to'lov turlaridan birini tanlang:</b>"
-msgstr ""
+msgstr "<b>📋Quyidagi to'lov turlaridan birini tanlang:</b>"
 
 #: handlers/users/backs.py:69 handlers/users/backs.py:72
 msgid "<b>Asosiy menu</b>"
-msgstr ""
+msgstr "<b>Asosiy menu</b>"
 
 #: handlers/users/balance.py:17 keyboards/default/start.py:19
 #: keyboards/default/start.py:45
 msgid "💰 Balans"
-msgstr ""
+msgstr "💰 Balans"
 
 #: handlers/users/balance.py:27
 msgid ""
@@ -168,31 +204,39 @@ msgid ""
 "🔹 Kriptovalyuta: {}\n"
 "⏳ Kunlik foiz: {}\n"
 "💸 Hozirgi balans: {} so'm"
-msgstr ""
+msgstr ""💰 Kiritgan summa: {}\n"
+"🔹 Kriptovalyuta: {}\n"
+"⏳ Kunlik foiz: {}\n"
+"💸 Hozirgi balans: {} so'm""
 
 #: handlers/users/balance.py:34
 msgid ""
 "<b>Karta raqami va karta kimni nomida ekanligini ko'rsating👇\n"
 "\n"
 "<code>8600777766668888/Falonchi Falonchiyev</code></b>"
-msgstr ""
+msgstr ""<b>Karta raqami va karta kimni nomida ekanligini ko'rsating👇\n"
+"\n"
+"<code>8600777766668888/Falonchi Falonchiyev</code></b>""
 
 #: handlers/users/balance.py:56
 msgid "Admin tez orada to'lov qiladi"
-msgstr ""
+msgstr "Admin tez orada to'lov qiladi"
 
 #: handlers/users/balance.py:64 handlers/users/balance.py:73
 msgid ""
 "Yaroqsiz karta boshqattan kiriting\n"
 "\n"
 "<code>8600777766668888/Falonchi Falonchiyev</code>"
-msgstr ""
+msgstr ""Yaroqsiz karta boshqattan kiriting\n"
+"\n"
+"<code>8600777766668888/Falonchi Falonchiyev</code>""
 
 #: handlers/users/balance.py:68
 msgid ""
 "<b>Botdan faqat eng kam miqdorda 100.000 so'm chiqarib olishingiz "
 "mumkin</b>"
-msgstr ""
+msgstr ""<b>Botdan faqat eng kam miqdorda 100.000 so'm chiqarib olishingiz "
+"mumkin</b>""
 
 #: handlers/users/buy_crypto.py:31
 msgid ""
@@ -207,7 +251,17 @@ msgid ""
 "bog'lanishingiz mumkin.\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Maximum LTC\n"
+"📋To'lov tizimi: Payeer\n"
+"\n"
+"💳 Hamyon: <code>P1092553472</code>\n"
+"📝 Izoh: <code>{}</code>, LTC\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin.\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:37
 msgid ""
@@ -222,7 +276,17 @@ msgid ""
 "bog'lanishingiz mumkin.\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Standart ETH\n"
+"📋To'lov tizimi: Payeer\n"
+"\n"
+"💳 Hamyon: <code>P1092553472</code>\n"
+"📝 Izoh: <code>{}</code>, ETH\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin.\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:43
 msgid ""
@@ -237,7 +301,17 @@ msgid ""
 "bog'lanishingiz mumkin.\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Premium BTC\n"
+"📋To'lov tizimi: Payeer\n"
+"\n"
+"💳 Hamyon: <code>P1092553472</code>\n"
+"📝 Izoh: <code>{}</code>, BTC\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin.\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:57
 msgid ""
@@ -252,7 +326,17 @@ msgid ""
 "bog'lanishingiz mumkin.\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Maximum LTC\n"
+"📋To'lov tizimi: Qiwi\n"
+"\n"
+"💳 Hamyon: <code>79955910342</code>\n"
+"📝 Izoh: <code>{}</code>, LTC\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin.\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:63
 msgid ""
@@ -267,7 +351,17 @@ msgid ""
 "bog'lanishingiz mumkin.\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Standart ETH\n"
+"📋To'lov tizimi: Qiwi\n"
+"\n"
+"💳 Hamyon: <code>79955910342</code>\n"
+"📝 Izoh: <code>{}</code>, ETH\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin.\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:69
 msgid ""
@@ -282,7 +376,17 @@ msgid ""
 "bog'lanishingiz mumkin. To'lovni tasdiqlash uchun chek yuborish shart!\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Premium BTC\n"
+"📋To'lov tizimi: Qiwi\n"
+"\n"
+"💳 Hamyon: <code>79955910342</code>\n"
+"📝 Izoh: <code>{}</code>, BTC\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin. To'lovni tasdiqlash uchun chek yuborish shart!\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:85
 msgid ""
@@ -297,7 +401,17 @@ msgid ""
 "bog'lanishingiz mumkin.\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Maximum LTC\n"
+"📋To'lov tizimi: Binance\n"
+"\n"
+"💳 Hamyon: <code>P1092553472</code>\n"
+"📝 Izoh: <code>{}</code>, LTC\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin.\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:91
 msgid ""
@@ -312,7 +426,17 @@ msgid ""
 "bog'lanishingiz mumkin.\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Standart ETH\n"
+"📋To'lov tizimi: Binance\n"
+"\n"
+"💳 Hamyon: <code>P1092553472</code>\n"
+"📝 Izoh: <code>{}</code>, ETH\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin.\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:97
 msgid ""
@@ -327,18 +451,29 @@ msgid ""
 "bog'lanishingiz mumkin.\n"
 "\n"
 "🔊To'lov haqidagi chekni shu yerga yuboring</b>"
-msgstr ""
+msgstr ""<b>🔹 Kriptovalyuta: Premium BTC\n"
+"📋To'lov tizimi: Binance\n"
+"\n"
+"💳 Hamyon: <code>P1092553472</code>\n"
+"📝 Izoh: <code>{}</code>, BTC\n"
+"\n"
+"❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri "
+"kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan "
+"bog'lanishingiz mumkin.\n"
+"\n"
+"🔊To'lov haqidagi chekni shu yerga yuboring</b>""
 
 #: handlers/users/buy_crypto.py:123
 msgid ""
 "Chek adminlarga yuborildi. Admin tez orada chekni tekshirib xisobingizni "
 "to'ldirishadi"
-msgstr ""
+msgstr ""Chek adminlarga yuborildi. Admin tez orada chekni tekshirib xisobingizni "
+"to'ldirishadi""
 
 #: handlers/users/deep_link.py:12 keyboards/default/start.py:24
 #: keyboards/default/start.py:50
 msgid "🔗 Referal"
-msgstr ""
+msgstr "🔗 Referal"
 
 #: handlers/users/deep_link.py:22
 msgid ""
@@ -349,22 +484,29 @@ msgid ""
 " etiladi!✅️\n"
 "\n"
 "Sizning link: <code>{}</code>"
-msgstr ""
+msgstr ""Sizning referalingiz: {} ta\n"
+"\n"
+"🎁Metago Botdan Sizga har bir taklif qilgan dòstingiz uchun 5$ gacha bonus"
+" beriladi va ular balansini har gal to'ldirganida sizga 1foiz oyda taqdim"
+" etiladi!✅️\n"
+"\n"
+"Sizning link: <code>{}</code>""
 
 #: handlers/users/help.py:14
 msgid ""
 "<b>Agar sizda biror bitta muammo bo'lsa yoki taklifingiz bo'lsa adminga "
 "murojaat qiling!</b>"
-msgstr ""
+msgstr ""<b>Agar sizda biror bitta muammo bo'lsa yoki taklifingiz bo'lsa adminga "
+"murojaat qiling!</b>""
 
 #: handlers/users/start.py:30
 msgid "<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>"
-msgstr ""
+msgstr "<b>Sizning hisobingizga 50.000 so'n qo'shildi</b>"
 
 #: handlers/users/viprate.py:15 keyboards/default/start.py:11
 #: keyboards/default/start.py:37
 msgid "✳️ Vip tariflar"
-msgstr ""
+msgstr "✳️ Vip tariflar"
 
 #: handlers/users/viprate.py:24
 msgid ""
@@ -373,7 +515,11 @@ msgid ""
 "Premium BTC <code>3.4%</code>\n"
 "🧾Shartnoma <code>30</code> kun\n"
 "Minimal summa: <code>5.000.000</code> sum"
-msgstr ""
+msgstr ""Premium BTC 👇\n"
+"\n"
+"Premium BTC <code>3.4%</code>\n"
+"🧾Shartnoma <code>30</code> kun\n"
+"Minimal summa: <code>5.000.000</code> sum""
 
 #: handlers/users/viprate.py:35
 msgid ""
@@ -382,7 +528,11 @@ msgid ""
 "Standart ETH <code>2.3%</code>\n"
 "🧾Shartnoma <code>30</code> kun\n"
 "Minimal summa: <code>500.000</code> sum"
-msgstr ""
+msgstr ""Standart ETH 👇\n"
+"\n"
+"Standart ETH <code>2.3%</code>\n"
+"🧾Shartnoma <code>30</code> kun\n"
+"Minimal summa: <code>500.000</code> sum""
 
 #: handlers/users/viprate.py:46
 msgid ""
@@ -391,19 +541,99 @@ msgid ""
 "Maximum LTC <code>1.8%</code>\n"
 "🧾Shartnoma <code>30</code> kun\n"
 "Minimal summa: <code>300.000</code> sum"
-msgstr ""
+msgstr ""Maximum LTC 👇\n"
+"\n"
+"Maximum LTC <code>1.8%</code>\n"
+"🧾Shartnoma <code>30</code> kun\n"
+"Minimal summa: <code>300.000</code> sum""
+
+#: handlers/users/admin_panel/pay_to_user.py:23
+msgid "<b>Foydalanuvchi idsini kiriting👇</b>"
+msgstr "<b>Foydalanuvchi idsini kiriting👇</b>"
+
+#: handlers/users/admin_panel/pay_to_user.py:38
+msgid "Kechirasiz bu foydalanuvchi <code>{}</code> ni sotib olgan ekan"
+msgstr "Kechirasiz bu foydalanuvchi <code>{}</code> ni sotib olgan ekan"
+
+#: handlers/users/admin_panel/pay_to_user.py:44
+msgid "Yaxshi endi foydalanuvchi qaysi kriptovalyuta olganini tanlang👇"
+msgstr "Yaxshi endi foydalanuvchi qaysi kriptovalyuta olganini tanlang👇"
+
+#: handlers/users/admin_panel/pay_to_user.py:49
+msgid ""
+"Iltimos faqat raqamlardan foydalaning\n"
+"\n"
+"Namuna: <code>1393587687</code>"
+msgstr ""Iltimos faqat raqamlardan foydalaning\n"
+"\n"
+"Namuna: <code>1393587687</code>""
+
+#: handlers/users/admin_panel/pay_to_user.py:60
+msgid ""
+"Yaxshi endi foydalanuvchi balansini nechi so'm bilan to'ldirmoqchi "
+"ekanliginzini yozing\n"
+"\n"
+"Namuna: <code>50000</code>"
+msgstr ""Yaxshi endi foydalanuvchi balansini nechi so'm bilan to'ldirmoqchi "
+"ekanliginzini yozing\n"
+"\n"
+"Namuna: <code>50000</code>""
+
+#: handlers/users/admin_panel/pay_to_user.py:75
+msgid "Foydalanuvchi balansi {} so'm bilan to'ldirildi✅"
+msgstr "Foydalanuvchi balansi {} so'm bilan to'ldirildi✅"
+
+#: handlers/users/admin_panel/pay_to_user.py:76
+msgid "Hisobingiz {} so'm bilan to'ldirildi, iltimos hisobingizni tekshiring"
+msgstr "Hisobingiz {} so'm bilan to'ldirildi, iltimos hisobingizni tekshiring"
+
+#: handlers/users/admin_panel/send_message.py:21
+msgid "<b>Reklamani yuboring...</b>"
+msgstr "<b>Reklamani yuboring...</b>"
+
+#: handlers/users/admin_panel/send_message.py:29
+msgid "<b>🔖Reklama <code>{}</code> ta foydalanuvchiga yuborish boshlandi</b>"
+msgstr "<b>🔖Reklama <code>{}</code> ta foydalanuvchiga yuborish boshlandi</b>"
+
+#: handlers/users/admin_panel/send_message.py:49
+msgid "Uzur xatolik yuz berdi, keyinroq urinib ko'ring!"
+msgstr "Uzur xatolik yuz berdi, keyinroq urinib ko'ring!"
+
+#: handlers/users/admin_panel/send_message.py:56
+msgid ""
+"✅ Reklama {} / {} ta foydalanuvchiga yuborildi\n"
+"\n"
+"❌ Reklama {} / {} ta foydalanuvchiga yuborilmadi"
+msgstr ""✅ Reklama {} / {} ta foydalanuvchiga yuborildi\n"
+"\n"
+"❌ Reklama {} / {} ta foydalanuvchiga yuborilmadi""
+
+#: handlers/users/admin_panel/statics.py:27
+msgid ""
+"<b>📅 Bugungi sana: {}\n"
+"🕰 Hozirgi vaqt: {}\n"
+"\n"
+"📊 Bot obunachilari soni: {}\n"
+"\n"
+"⚡️ @{}</b>"
+msgstr ""<b>📅 Bugungi sana: {}\n"
+"🕰 Hozirgi vaqt: {}\n"
+"\n"
+"📊 Bot obunachilari soni: {}\n"
+"\n"
+"⚡️ @{}</b>""
 
 #: keyboards/inline/admin.py:12
 msgid "📊 Statistika"
-msgstr ""
+msgstr "📊 Statistika"
 
 #: keyboards/inline/admin.py:15
 msgid "🗞 Xabar yuborish"
-msgstr ""
+msgstr "🗞 Xabar yuborish"
 
 #: keyboards/inline/admin.py:20
 msgid "➕ Pul kiritish"
-msgstr ""
+msgstr "➕ Pul kiritish"
 
 #: keyboards/inline/admin.py:25 keyboards/inline/admin.py:46
 #: keyboards/inline/back.py:17 keyboards/inline/back.py:32
@@ -411,50 +641,50 @@ msgstr ""
 #: keyboards/inline/back.py:68 keyboards/inline/buying.py:16
 #: keyboards/inline/cards.py:27 keyboards/inline/viprates.py:27
 msgid "◀️ Orqaga"
-msgstr ""
+msgstr "◀️ Orqaga"
 
 #: keyboards/inline/admin.py:35 keyboards/inline/viprates.py:12
 msgid "Premium BTC"
-msgstr ""
+msgstr "Premium BTC"
 
 #: keyboards/inline/admin.py:38 keyboards/inline/viprates.py:17
 msgid "Standart ETH"
-msgstr ""
+msgstr "Standart ETH"
 
 #: keyboards/inline/admin.py:41 keyboards/inline/viprates.py:22
 msgid "Maximum LTC"
-msgstr ""
+msgstr "Maximum LTC"
 
 #: keyboards/inline/apply.py:11
 msgid "☎️ Metago Admin"
-msgstr ""
+msgstr "☎️ Metago Admin"
 
 #: keyboards/inline/back.py:12 keyboards/inline/back.py:27
 #: keyboards/inline/back.py:42
 msgid "✅ Sotib olish"
-msgstr ""
+msgstr "✅ Sotib olish"
 
 #: keyboards/inline/balance.py:12
 msgid "📤 Pul chiqarish"
-msgstr ""
+msgstr "📤 Pul chiqarish"
 
 #: keyboards/inline/buying.py:11
 msgid "📨 Bog'lanish"
-msgstr ""
+msgstr "📨 Bog'lanish"
 
 #: keyboards/inline/buying.py:41
 msgid "✅ To'lash"
-msgstr ""
+msgstr "✅ To'lash"
 
 #: keyboards/inline/buying.py:46
 msgid "❌ Bekor qilish"
-msgstr ""
+msgstr "❌ Bekor qilish"
 
 #: keyboards/inline/deeplink.py:11
 msgid "📲 Do'stlarga ulashish"
-msgstr ""
+msgstr "📲 Do'stlarga ulashish"
 
 #: keyboards/inline/help.py:11
 msgid "🆘 Admin"
-msgstr ""
+msgstr "🆘 Admin"
 

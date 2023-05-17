@@ -10,7 +10,7 @@ from language import i18n
 _ = i18n.gettext
 
 
-@dp.message_handler(text=_("📰 Bot haqida"), state='*')
+@dp.message_handler(text=[_("📰 Bot haqida"), "📰 О боте"], state='*')
 async def about_us_func(message: types.Message, state: FSMContext):
     media1 = MediaGroup()
     media2 = MediaGroup()

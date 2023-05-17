@@ -8,7 +8,7 @@ buying = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text=_("📨 Bog'lanish"), url='https://t.me/Rasul_Maxmudov'
+                text=_("📨 Bog'lanish"), url='https://t.me/Metagobot_admini'
             )
         ],
         [

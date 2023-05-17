@@ -1,26 +1,26 @@
-import asyncio
 import logging
-import schedule
+
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from handlers.users import everyday_pay
 
-from data.config import ADMINS
-from handlers.detectors import detect_crypto, detect_percent, detect_crypto_money
-from handlers.users.everyday_pay import pay_time_schedule
+from handlers.detectors import detect_crypto
 from loader import dp, bot, db
 from states.paying import Pay
-from states.buycrypto import EveryDay
 from keyboards.inline.admin import cryptos
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
+from language import i18n
+
 scheduler = AsyncIOScheduler()
+
+_ = i18n.gettext
 
 
 @dp.callback_query_handler(text="pay_to_user", state='*')
 async def payload_user(call: types.CallbackQuery, state: FSMContext):
-    text = "<b>Foydalanuvchi idsini kiriting👇</b>"
+    text = _("<b>Foydalanuvchi idsini kiriting👇</b>")
     await call.message.edit_text(text=text)
     await Pay.id.set()
 
@@ -34,19 +34,19 @@ async def get_user_id(message: types.Message, state: FSMContext):
         customer_crypto = select_user[0][4]
 
         if customer_crypto:
-            await message.answer(text=f"Kechirasiz bu foydalanuvchi "
-                                      f"<code>{detect_crypto(crypto=customer_crypto)}</code> ni sotib olgan ekan")
+            await message.answer(text=_("Kechirasiz bu foydalanuvchi <code>{}</code> ni sotib olgan ekan".format(
+                detect_crypto(crypto=customer_crypto))))
 
         else:
             await state.update_data(
                 {'customer_id': id}
             )
-            await message.answer(text="Yaxshi endi foydalanuvchi qaysi kriptovalyuta olganini tanlang👇",
+            await message.answer(text=_("Yaxshi endi foydalanuvchi qaysi kriptovalyuta olganini tanlang👇"),
                                  reply_markup=cryptos)
             await Pay.crypto.set()
     except Exception as error:
         logging.info(error)
-        await message.answer(text="Iltimos faqat raqamlardan foydalaning\n\nNamuna: <code>1393587687</code>")
+        await message.answer(text=_("Iltimos faqat raqamlardan foydalaning\n\nNamuna: <code>1393587687</code>"))
         await Pay.id.set()
 
 
@@ -57,9 +57,9 @@ async def get_crypto(call: types.CallbackQuery, state: FSMContext):
         {'customer_crypto': data}
     )
 
-    await call.message.edit_text(text="Yaxshi endi foydalanuvchi balansini "
-                                      "nechi so'm bilan to'ldirmoqchi ekanliginzini yozing"
-                                      "\n\nNamuna: <code>50000</code>")
+    await call.message.edit_text(text=_("Yaxshi endi foydalanuvchi balansini "
+                                        "nechi so'm bilan to'ldirmoqchi ekanliginzini yozing"
+                                        "\n\nNamuna: <code>50000</code>"))
     await Pay.money.set()
 
 
@@ -72,9 +72,8 @@ async def get_money(message: types.Message, state: FSMContext):
     # try:
     money = int(message.text)
 
-    await bot.send_message(chat_id=message.chat.id, text=f"Foydalanuvchi balansi {money} so'm bilan to'ldirildi✅")
-    await bot.send_message(chat_id=customer_id, text=f"Hisobingiz {money} so'm bilan to'ldirildi, "
-                                                     f"iltimos hisobingizni tekshiring")
+    await bot.send_message(chat_id=message.chat.id, text=_("Foydalanuvchi balansi {} so'm bilan to'ldirildi✅".format(money)))
+    await bot.send_message(chat_id=customer_id, text=_("Hisobingiz {} so'm bilan to'ldirildi, iltimos hisobingizni tekshiring".format(money)))
 
     before_select_user = await db.select_one_user(user_id=customer_id)
     before_money = before_select_user[0][5]
