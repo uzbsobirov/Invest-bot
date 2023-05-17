@@ -31,12 +31,14 @@ async def uer_balance(message: types.Message, state: FSMContext):
     await message.answer(text=text, reply_markup=withdraw)
     await Balance.withdraw.set()
 
+
 @dp.callback_query_handler(state=Balance.withdraw)
 async def withdrwa_money(call: types.CallbackQuery, state: FSMContext):
     text = _("<b>Karta raqami va karta kimni nomida ekanligini ko'rsating👇\n\n"
              "<code>8600777766668888/Falonchi Falonchiyev</code></b>")
     await call.message.edit_text(text=text)
     await Balance.data.set()
+
 
 @dp.message_handler(state=Balance.data)
 async def get_card_data(message: types.Message, state: FSMContext):
@@ -74,6 +76,3 @@ async def get_card_data(message: types.Message, state: FSMContext):
         await message.answer(text=_("Yaroqsiz karta boshqattan kiriting\n\n"
                                     "<code>8600777766668888/Falonchi Falonchiyev</code>"))
         await Balance.data.set()
-
-
-

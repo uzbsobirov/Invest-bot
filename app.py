@@ -7,11 +7,9 @@ from utils.set_bot_commands import set_default_commands
 from handlers.users.admin_panel.pay_to_user import scheduler
 
 
-
 async def on_startup(dispatcher):
     await db.create()
     await db.create_table_users()
-    await db.create_table_sponsor()
     await db.create_table_user_lang()
 
     # Birlamchi komandalar (/start va /help)
@@ -21,10 +19,6 @@ async def on_startup(dispatcher):
     await on_startup_notify(dispatcher)
 
 
-
-
-
 if __name__ == "__main__":
     scheduler.start()
     executor.start_polling(dp, on_startup=on_startup)
-

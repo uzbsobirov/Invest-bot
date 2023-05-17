@@ -27,20 +27,16 @@ class Localization(I18nMiddleware):
         user: types.User = types.User.get_current()
 
         user_data = await db.select_user_lang(user_id=int(user.id))
-        # print(user_data)
         if user_data is None or user_data == []:
             try:
                 await db.add_user_lang(full_name=user.full_name, username=user.username, user_id=int(user.id),
-                                       lang='ru')
+                                       lang='null')
             except asyncpg.exceptions.UniqueViolationError as uve:
                 logging.info(uve)
-                print('galdi')
-            # LANG_STORAGE[user.id] = "en"
-        # data = args
-        # print(args)
-        language = await db.get_lang(user_id=int(user.id))[0][0]
-        #
-        #
+
+        *_, data = args
+        user_lang = (await db.get_lang(user_id=int(user.id)))[0][0]
+        language = user_lang
         return language
 
 

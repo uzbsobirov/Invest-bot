@@ -4,14 +4,11 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.builtin import CommandStart
 from aiogram.utils.deep_linking import get_start_link
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from data.config import ADMINS
 from keyboards.default.start import start, start_admin
 from keyboards.inline.lang import langs
 from loader import dp, db, bot
-from states.admin import Panel
-from utils.misc.subs import check
 
 from language import i18n
 
@@ -64,21 +61,24 @@ async def bot_start(message: types.Message, state: FSMContext):
     except Exception as error:
         logging.info(error)
 
-    try:
-        await db.add_user_lang(
-            full_name=full_name,
-            username=username,
-            user_id=user_id,
-            lang='null'
-        )
-    except:
-        pass
-
     user_select = await db.select_user_lang(user_id=user_id)
     user_lang = user_select[0][4]
 
     if user_lang != 'null':
-        print('Have')
+        if parent_id:
+            if user_id != ADMINS[0]:
+                await db.update_user_money(money=50000, user_id=int(parent_id))
+                await db.update_user_count(user_id=int(parent_id))
+                await bot.send_message(chat_id=int(parent_id), text='На ваш счет добавлено $5')
+                await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start)
+            else:
+                await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
+
+        else:
+            if user_id != ADMINS[0]:
+                await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start)
+            else:
+                await bot.send_message(chat_id=message.chat.id, text=main_text, reply_markup=start_admin)
     else:
         text = "🇺🇿 Tilni tanlang:\n🇷🇺 Выберите язык:"
         await message.answer(text=text, reply_markup=langs)

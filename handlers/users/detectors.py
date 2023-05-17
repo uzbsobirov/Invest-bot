@@ -1,5 +1,6 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+
 def input_sum(item):
     if item is None:
         name = "<code>Kiritilmagan</code>"
@@ -7,6 +8,7 @@ def input_sum(item):
     else:
         name = item
         return name
+
 
 def crypto(item):
     if item is None:
@@ -16,6 +18,7 @@ def crypto(item):
         name = item
         return name
 
+
 def percent(item):
     if item is None:
         name = "<code>Kiritilmagan</code>"
@@ -23,6 +26,7 @@ def percent(item):
     else:
         name = item
         return name
+
 
 def detect_crypto(crypto):
     if crypto == 'premiumbtc':
@@ -37,6 +41,7 @@ def detect_crypto(crypto):
     else:
         pass
 
+
 def detect_percent(crypto):
     if crypto == 'premiumbtc':
         return 3.4
@@ -46,6 +51,7 @@ def detect_percent(crypto):
 
     else:
         return 1.8
+
 
 def detect_markups(markups):
     markup = InlineKeyboardMarkup(row_width=1)
@@ -67,3 +73,4 @@ def detect_crypto_money(crypto):
 
     else:
         return 300000
+

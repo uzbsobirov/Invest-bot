@@ -8,6 +8,7 @@ from language import i18n
 
 _ = i18n.gettext
 
+
 @dp.message_handler(text=_("🔗 Referal"), state='*')
 async def start_deep_link(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
@@ -20,7 +21,7 @@ async def start_deep_link(message: types.Message, state: FSMContext):
 
     caption = _(f"Sizning referalingiz: {count} ta\n\n"
                 f"🎁Metago Botdan Sizga har bir taklif qilgan dòstingiz uchun 5$ "
-                f"gacha bonus beriladi va ular balansini har gal to'ldirganida sizga 1% " 
+                f"gacha bonus beriladi va ular balansini har gal to'ldirganida sizga 1% "
                 f"oyda taqdim etiladi!✅️\n\nSizning link: <code>{deeplink}</code>")
 
     with open(file='media/referal.jpg', mode='rb') as photo:

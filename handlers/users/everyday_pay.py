@@ -1,21 +1,9 @@
-import asyncio
-
-import schedule
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-
-from loader import dp, db
+from loader import db
 from .detectors import detect_percent, detect_crypto_money
-from data.config import ADMINS
-
-from aiogram import types
 
 
 async def pay_time_schedule(user_id: int):
-    # user_id = update['from']['id']
 
-
-
-    # for _ in range(1, 31):
     get_datas = await db.select_one_user(user_id=int(user_id))
 
     current_money = get_datas[0][5]
