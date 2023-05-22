@@ -140,6 +140,10 @@ class Database:
         sql = "UPDATE Users SET money=$1 WHERE user_id=$2"
         return await self.execute(sql, money, user_id, execute=True)
 
+    async def update_user_crypto(self, crypto, user_id):
+        sql = "UPDATE Users SET crypto=$1 WHERE user_id=$2"
+        return await self.execute(sql, crypto, user_id, execute=True)
+
     async def update_user_language(self, lang, user_id):
         sql = "UPDATE lang_users SET lang=$1 WHERE user_id=$2"
         return await self.execute(sql, lang, user_id, execute=True)

@@ -9,10 +9,8 @@ async def pay_time_schedule(user_id: int):
     current_money = get_datas[0][5]
     crypto = get_datas[0][4]
     date = get_datas[0][12]
-
     if date > 0:
         if current_money > detect_crypto_money(crypto=crypto):
-
             percent = (current_money * detect_percent(crypto=crypto)) / 100
 
             changed_money = current_money + percent

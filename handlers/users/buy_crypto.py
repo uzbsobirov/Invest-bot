@@ -34,7 +34,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                 user_id))
 
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/23", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/31", thumb='https://t.me/metago_medias/23',  caption=text, reply_markup=buying)
 
     elif current == 'standarteth':
         text = _(
@@ -42,14 +42,14 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                 user_id))
 
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/23", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/31", thumb='https://t.me/metago_medias/23',  caption=text, reply_markup=buying)
 
     else:
         text = _(
             "<b>🔹 Kriptovalyuta: Premium BTC\n📋To'lov tizimi: Payeer\n\n💳 Hamyon: <code>P1092553472</code>\n📝 Izoh: <code>{}</code>, BTC\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
                 user_id))
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/23", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/31", thumb='https://t.me/metago_medias/23', caption=text, reply_markup=buying)
 
     await Buy.photo.set()
 
@@ -67,7 +67,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                 user_id))
 
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/24", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/29", thumb='https://t.me/metago_medias/24', caption=text, reply_markup=buying)
 
     elif current == 'standarteth':
         text = _(
@@ -75,7 +75,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                 user_id))
 
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/24", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/29", thumb='https://t.me/metago_medias/24', caption=text, reply_markup=buying)
 
     else:
         text = _(
@@ -83,7 +83,7 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
                 user_id))
 
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/24", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/29", thumb='https://t.me/metago_medias/24', caption=text, reply_markup=buying)
 
     await Buy.photo.set()
 
@@ -97,27 +97,61 @@ async def buy_anything(call: types.CallbackQuery, state: FSMContext):
 
     if current == 'maximumltc':
         text = _(
-            "<b>🔹 Kriptovalyuta: Maximum LTC\n📋To'lov tizimi: Binance\n\n💳 Hamyon: <code>P1092553472</code>\n📝 Izoh: <code>{}</code>, LTC\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
+            "<b>🔹 Kriptovalyuta: Maximum LTC\n📋To'lov tizimi: Binance\n\n💳 Hamyon: <code>TLNYWUtXxRt6eSGMvRM2VZ2LQdMsvSnaQR</code>\n📝 Izoh: <code>{}</code>, LTC\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
                 user_id))
 
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/26", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/28", thumb='https://t.me/metago_medias/26', caption=text, reply_markup=buying)
 
     elif current == 'standarteth':
         text = _(
-            "<b>🔹 Kriptovalyuta: Standart ETH\n📋To'lov tizimi: Binance\n\n💳 Hamyon: <code>P1092553472</code>\n📝 Izoh: <code>{}</code>, ETH\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
+            "<b>🔹 Kriptovalyuta: Standart ETH\n📋To'lov tizimi: Binance\n\n💳 Hamyon: <code>TLNYWUtXxRt6eSGMvRM2VZ2LQdMsvSnaQR</code>\n📝 Izoh: <code>{}</code>, ETH\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
                 user_id))
 
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/26", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/28", thumb='https://t.me/metago_medias/26', caption=text, reply_markup=buying)
 
     else:
         text = _(
-            "<b>🔹 Kriptovalyuta: Premium BTC\n📋To'lov tizimi: Binance\n\n💳 Hamyon: <code>P1092553472</code>\n📝 Izoh: <code>{}</code>, BTC\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
+            "<b>🔹 Kriptovalyuta: Premium BTC\n📋To'lov tizimi: Binance\n\n💳 Hamyon: <code>TLNYWUtXxRt6eSGMvRM2VZ2LQdMsvSnaQR</code>\n📝 Izoh: <code>{}</code>, BTC\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
                 user_id))
 
         await call.message.delete()
-        await call.message.answer_photo(photo="https://t.me/metago_medias/26", caption=text, reply_markup=buying)
+        await call.message.answer_video(video="https://t.me/metago_medias/28", thumb='https://t.me/metago_medias/26', caption=text, reply_markup=buying)
+
+    await Buy.photo.set()
+
+
+@dp.callback_query_handler(text="payme", state=Buy.crypto)
+async def buy_anything(call: types.CallbackQuery, state: FSMContext):
+    user_id = call.from_user.id
+
+    data = await state.get_data()
+    current = data.get('current_crypto')
+
+    if current == 'maximumltc':
+        text = _(
+            "<b>🔹 Kriptovalyuta: Maximum LTC\n📋To'lov tizimi: Payme\n\n💳 Hamyon: <code>P1092553472</code>\n📝 Izoh: <code>{}</code>, LTC\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
+                user_id))
+
+        await call.message.delete()
+        await call.message.answer_video(video="https://t.me/metago_medias/30", thumb='https://t.me/metago_medias/27', caption=text, reply_markup=buying)
+
+    elif current == 'standarteth':
+        text = _(
+            "<b>🔹 Kriptovalyuta: Standart ETH\n📋To'lov tizimi: Payme\n\n💳 Hamyon: <code>P1092553472</code>\n📝 Izoh: <code>{}</code>, ETH\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
+                user_id))
+
+        await call.message.delete()
+        await call.message.answer_video(video="https://t.me/metago_medias/30", thumb='https://t.me/metago_medias/27', caption=text, reply_markup=buying)
+
+    else:
+        text = _(
+            "<b>🔹 Kriptovalyuta: Premium BTC\n📋To'lov tizimi: Payme\n\n💳 Hamyon: <code>P1092553472</code>\n📝 Izoh: <code>{}</code>, BTC\n\n❗️Qo'shimcha: Diqqat! izoh kiritishni unutsangiz yoki noto'g'ri kiritsangiz hisobingizga pul tushmaydi! Bu kabi holatlarda, biz bilan bog'lanishingiz mumkin.\n\n🔊To'lov haqidagi chekni shu yerga yuboring</b>".format(
+                user_id))
+
+        await call.message.delete()
+        await call.message.answer_video(video="https://t.me/metago_medias/30", thumb='https://t.me/metago_medias/27', caption=text, reply_markup=buying)
 
     await Buy.photo.set()
 

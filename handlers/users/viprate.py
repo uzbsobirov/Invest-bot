@@ -22,7 +22,7 @@ async def vip_rates(message: types.Message, state: FSMContext):
 @dp.callback_query_handler(text="premiumbtc", state=Rate.rates)
 async def premium_func_btc(call: types.CallbackQuery, state: FSMContext):
     text = _("Premium BTC 👇\n\nPremium BTC <code>3.4%</code>\n🧾Shartnoma <code>30</code> kun\n"
-             "Minimal summa: <code>5.000.000</code> sum")
+             "Minimal summa: <code>1.000.000</code> sum")
     await call.message.edit_text(text=text, reply_markup=back_btc)
 
     await state.update_data(
