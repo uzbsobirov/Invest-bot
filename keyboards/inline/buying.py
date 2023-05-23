@@ -8,11 +8,6 @@ buying = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text=_("📨 Bog'lanish"), url='https://t.me/Metagobot_admini'
-            )
-        ],
-        [
-            InlineKeyboardButton(
                 text=_("◀️ Orqaga"), callback_data='back_to_cards'
             )
         ]
