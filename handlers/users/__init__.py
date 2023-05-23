@@ -1,4 +1,13 @@
-from . import (
-    backs, help, start, admin_panel, viprate, buy_crypto, balance, deep_link, applying, about_us, admin,
-    everyday_pay, lang_data
-)
+from . import backs
+from . import help
+from . import start
+from . import admin_panel
+from . import viprate
+from . import buy_crypto
+from . import balance
+from . import deep_link
+from . import applying
+from . import about_us
+from . import admin
+from . import everyday_pay
+from . import lang_data
